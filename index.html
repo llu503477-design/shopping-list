@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="我家的私房菜">
+<meta name="theme-color" content="#faf6f0">
+<title>我家的私房菜</title>
+<link rel="manifest" href="manifest.json">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf6f0;
+  --parchment:#f2ebe0;
+  --sand:#e8ddd0;
+  --sand2:#d9cabb;
+  --bark:#8b6f5e;
+  --bark2:#6b5244;
+  --ink:#2c1f14;
+  --sage:#4a7c59;
+  --sage-light:#edf4ef;
+  --sage-mid:#c6deca;
+  --sage-dark:#2e5237;
+  --terracotta:#c0633a;
+  --terracotta-light:#fdf0ea;
+  --amber:#b07828;
+  --amber-light:#fdf5e4;
+  --red:#b83a2a;
+  --red-light:#fdecea;
+  --bd:rgba(139,111,94,.14);
+  --sh:0 2px 8px rgba(44,31,20,.07);
+  --sh2:0 4px 16px rgba(44,31,20,.1);
+  --r:16px;
+  --r-sm:10px;
+}
+html,body{height:100%}
+body{
+  font-family:-apple-system,"PingFang SC","Noto Serif SC","Microsoft YaHei",sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  font-size:15px;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior:none;
+}
+.app{display:flex;flex-direction:column;min-height:100vh;max-width:430px;margin:0 auto}
+
+/* ── HEADER ── */
+.hdr{
+  background:var(--cream);
+  padding:calc(env(safe-area-inset-top,0px) + 16px) 18px 12px;
+  border-bottom:1px solid var(--sand);
+  position:sticky;top:0;z-index:90;
+}
+.hdr-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.title-wrap{display:flex;align-items:center;gap:7px;cursor:pointer}
+.title-txt{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-.3px}
+.title-pencil{font-size:14px;color:var(--sand2)}
+.title-input{font-size:20px;font-weight:600;border:none;border-bottom:2px solid var(--sage);background:transparent;outline:none;color:var(--ink);width:180px;padding:1px 0;font-family:inherit}
+.hbts{display:flex;gap:4px}
+.ibt{background:none;border:none;cursor:pointer;padding:7px;border-radius:12px;color:var(--bark);font-size:18px;display:flex;align-items:center;transition:background .15s}
+.ibt:active{background:var(--parchment)}
+.search-box{position:relative}
+.search-box input{
+  width:100%;padding:9px 14px 9px 38px;
+  border:1.5px solid var(--sand);
+  border-radius:24px;
+  font-size:13px;background:var(--parchment);color:var(--ink);
+  outline:none;font-family:inherit;
+  transition:border-color .15s,background .15s;
+}
+.search-box input:focus{border-color:var(--sage);background:#fff}
+.search-box input::placeholder{color:var(--bark)}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--bark);pointer-events:none}
+
+/* ── NAV ── */
+.bnav{
+  background:var(--cream);
+  border-top:1px solid var(--sand);
+  display:flex;z-index:100;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.nb{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:10px 0 8px;font-size:11px;color:var(--bark);
+  background:none;border:none;cursor:pointer;transition:color .15s;
+  font-family:inherit;
+}
+.nb.on{color:var(--sage)}
+.nb.on .ni-wrap{background:var(--sage-light)}
+.ni-wrap{width:40px;height:28px;border-radius:14px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.ni{font-size:19px;line-height:1}
+
+/* ── PAGES ── */
+.pg{flex:1;padding:14px 16px 20px;display:none;overflow-x:hidden}
+.pg.on{display:block}
+
+/* ── RECIPE LIST ── */
+.rcard{
+  background:#fff;
+  border-radius:var(--r);
+  margin-bottom:10px;
+  box-shadow:var(--sh);
+  overflow:hidden;
+  border:1px solid var(--sand);
+}
+.ri{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 16px;
+  border-bottom:1px solid var(--parchment);
+  cursor:pointer;transition:background .12s;
+}
+.ri:last-child{border-bottom:none}
+.ri:active{background:var(--parchment)}
+.re{
+  font-size:26px;width:48px;height:48px;
+  background:var(--parchment);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;overflow:hidden;
+}
+.re img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.rname{font-size:15px;font-weight:600;color:var(--ink);line-height:1.3}
+.ring{font-size:12px;color:var(--bark);margin-top:3px;line-height:1.4}
+.remind-badge{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:11px;background:var(--amber-light);color:var(--amber);
+  padding:2px 8px;border-radius:20px;margin-top:4px;
+  border:1px solid #e8d4a0;
+}
+.chevron{color:var(--sand2);font-size:16px}
+
+/* ── TAGS ── */
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
+.t-sage{background:var(--sage-light);color:var(--sage-dark);border:1px solid var(--sage-mid)}
+.t-amber{background:var(--amber-light);color:var(--amber);border:1px solid #e8d4a0}
+.t-bark{background:var(--parchment);color:var(--bark2);border:1px solid var(--sand)}
+.t-terra{background:var(--terracotta-light);color:var(--terracotta);border:1px solid #f0cfc0}
+
+/* ── SECTION LABEL ── */
+.sl{
+  font-size:11px;font-weight:600;color:var(--bark);
+  letter-spacing:.8px;text-transform:uppercase;
+  margin:16px 0 8px;
+}
+
+/* ── WEEKLY TABLE ── */
+.week-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px;padding:0 16px 6px}
+.week-scroll::-webkit-scrollbar{display:none}
+.week-table{border-collapse:separate;border-spacing:5px;min-width:540px}
+.week-table th{font-size:11px;font-weight:600;color:var(--bark);padding:3px 4px;text-align:center;white-space:nowrap}
+.day-th{font-size:11px;font-weight:600;color:var(--ink);padding:3px 6px;text-align:left;white-space:nowrap;width:34px}
+.wc{
+  background:#fff;border:1.5px solid var(--sand);
+  border-radius:12px;padding:6px;min-height:64px;
+  cursor:pointer;vertical-align:top;width:100px;
+  transition:border-color .15s,background .15s;
+}
+.wc.has{border-color:var(--sage-mid);background:var(--sage-light)}
+.wc.fruit-cell{border-color:#e8c96a;background:var(--amber-light)}
+.wc .add-hint{color:var(--sand2);text-align:center;font-size:20px;padding-top:12px;line-height:1}
+.meal-chip{
+  font-size:10px;font-weight:500;
+  background:#fff;border-radius:6px;
+  padding:3px 5px;margin-bottom:3px;
+  display:flex;align-items:center;gap:3px;
+  border:1px solid var(--sand);
+}
+.mc-e{font-size:13px;flex-shrink:0}
+.mc-n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--sage-dark)}
+.mc-x{color:var(--bark);cursor:pointer;flex-shrink:0;font-size:11px;line-height:1;padding:1px 2px}
+.fruit-chip{font-size:10px;background:#fff;border-radius:6px;padding:3px 5px;margin-bottom:3px;border:1px solid #e8c96a;color:var(--amber)}
+.prow-hdr{display:flex;align-items:center;gap:8px;margin:18px 0 8px}
+.prow-ava{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.prow-name{font-size:14px;font-weight:600;color:var(--ink)}
+
+/* ── SHOPPING ── */
+.ss{
+  background:#fff;border-radius:var(--r);
+  margin-bottom:10px;overflow:hidden;
+  box-shadow:var(--sh);border:1px solid var(--sand);
+}
+.ssh{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;
+  background:var(--parchment);
+  border-bottom:1px solid var(--sand);
+}
+.ssh-icon{font-size:18px}
+.sn{font-size:14px;font-weight:600;color:var(--ink);flex:1}
+.sc{font-size:12px;color:var(--bark);background:var(--sand);padding:2px 8px;border-radius:20px}
+.si{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--parchment)}
+.si:last-child{border-bottom:none}
+.chk{
+  width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--sand2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;font-size:12px;
+  transition:all .15s;
+}
+.chk.on{background:var(--sage);border-color:var(--sage);color:#fff}
+.sin{flex:1;font-size:14px;color:var(--ink)}
+.sin.ck{color:var(--bark);text-decoration:line-through}
+.siq{font-size:12px;color:var(--bark);margin-right:4px}
+.sedit{background:none;border:none;color:var(--sand2);cursor:pointer;font-size:14px;padding:2px 4px}
+.prog-card{
+  background:#fff;border-radius:var(--r);
+  padding:14px 16px;margin-bottom:10px;
+  box-shadow:var(--sh);border:1px solid var(--sand);
+}
+.prog-label{font-size:11px;color:var(--bark);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.prog-num{font-size:26px;font-weight:700;color:var(--ink);margin:4px 0}
+.pb{background:var(--sand);border-radius:20px;height:6px;margin-top:2px}
+.pbf{background:var(--sage);height:6px;border-radius:20px;transition:width .35s}
+.si-add{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;cursor:pointer;
+  color:var(--bark);transition:background .12s;
+}
+.si-add:hover{background:var(--parchment)}
+.si-add-icon{
+  width:22px;height:22px;border-radius:50%;
+  border:1.5px dashed var(--sand2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;color:var(--bark);line-height:1;
+}
+.si-add-txt{font-size:13px;color:var(--bark)}
+.si-editing{
+  display:flex;align-items:center;gap:7px;
+  padding:9px 14px;
+  background:var(--sage-light);
+  border-top:1.5px solid var(--sage-mid);
+}
+.si-editing input{
+  padding:7px 10px;border:1.5px solid var(--sage-mid);
+  border-radius:10px;font-size:13px;
+  background:#fff;color:var(--ink);
+  font-family:inherit;outline:none;
+  transition:border-color .15s;
+}
+.si-editing input:focus{border-color:var(--sage)}
+.si-editing .ni-name{flex:1;min-width:0}
+.si-editing .ni-qty{width:66px}
+.si-confirm{
+  background:var(--sage);color:#fff;border:none;
+  border-radius:10px;padding:7px 12px;
+  font-size:13px;cursor:pointer;white-space:nowrap;
+  font-family:inherit;font-weight:500;
+  transition:background .15s;
+}
+.si-confirm:active{background:var(--sage-dark)}
+.ni-cancel{background:none;border:none;color:var(--bark);font-size:20px;cursor:pointer;padding:0 3px;line-height:1}
+.remind-card{
+  background:var(--amber-light);border-radius:var(--r);
+  padding:14px 16px;margin-bottom:10px;
+  border:1.5px solid #e8d4a0;
+}
+.rc-ttl{font-size:12px;font-weight:600;color:var(--amber);margin-bottom:8px;letter-spacing:.3px}
+.remind-item{font-size:13px;color:var(--bark2);padding:4px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+
+/* ── MODAL ── */
+.mo{position:fixed;inset:0;background:rgba(44,31,20,.5);z-index:200;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .2s}
+.mo.op{opacity:1;pointer-events:all}
+.mbox{
+  background:var(--cream);border-radius:22px 22px 0 0;
+  width:100%;padding:0 0 env(safe-area-inset-bottom,16px);
+  max-height:92vh;overflow-y:auto;
+  transform:translateY(40px);transition:transform .22s cubic-bezier(.32,1,.4,1);
+}
+.mo.op .mbox{transform:translateY(0)}
+.mhan{width:40px;height:4px;background:var(--sand2);border-radius:2px;margin:12px auto 0}
+.mhdr{
+  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--sand);
+}
+.mttl{font-size:17px;font-weight:700;color:var(--ink)}
+.mbdy{padding:16px 20px 20px}
+.mcls{background:none;border:none;font-size:22px;color:var(--bark);cursor:pointer;padding:4px;line-height:1}
+
+.detail-img-wrap{
+  width:100%;border-radius:14px;overflow:hidden;
+  background:var(--parchment);margin-bottom:16px;
+  min-height:120px;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;position:relative;
+}
+.detail-img-wrap img{width:100%;display:block}
+.detail-img-placeholder{font-size:52px;padding:32px}
+.img-upload-hint{
+  position:absolute;bottom:10px;right:10px;
+  background:rgba(44,31,20,.5);color:#fff;
+  font-size:11px;padding:4px 10px;border-radius:20px;
+}
+.editable{
+  border:none;border-bottom:1px solid var(--sand2);
+  background:transparent;font-size:14px;color:var(--ink);
+  font-family:inherit;outline:none;width:100%;padding:3px 0;
+  transition:border-color .15s;
+}
+.editable:focus{border-bottom-color:var(--sage)}
+.ing-row{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--parchment)}
+.ing-row:last-child{border-bottom:none}
+.step-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--parchment)}
+.step-row:last-child{border-bottom:none}
+.step-num{
+  width:22px;height:22px;min-width:22px;
+  background:var(--sage);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;margin-top:2px;
+}
+.rm-btn{background:none;border:none;color:var(--sand2);cursor:pointer;font-size:18px;padding:0 2px;line-height:1}
+.rm-btn:hover{color:var(--red)}
+
+input[type=text],textarea,select{
+  width:100%;padding:10px 12px;
+  border:1.5px solid var(--sand);border-radius:12px;
+  font-size:14px;background:var(--parchment);color:var(--ink);
+  font-family:inherit;outline:none;-webkit-appearance:none;
+  transition:border-color .15s,background .15s;
+}
+input[type=text]:focus,textarea:focus,select:focus{border-color:var(--sage);background:#fff}
+input[type=number]{
+  width:64px;padding:8px 10px;
+  border:1.5px solid var(--sand);border-radius:10px;
+  font-size:14px;background:var(--parchment);color:var(--ink);
+  font-family:inherit;outline:none;
+}
+input[type=number]:focus{border-color:var(--sage);background:#fff}
+.fl{font-size:12px;font-weight:600;color:var(--bark);margin-bottom:5px;letter-spacing:.2px}
+.fg{margin-bottom:14px}
+
+.bp{
+  width:100%;padding:13px;
+  background:var(--sage);color:#fff;
+  border:none;border-radius:14px;
+  font-size:15px;font-weight:600;cursor:pointer;
+  font-family:inherit;margin-top:6px;
+  transition:background .15s,transform .1s;
+  letter-spacing:.2px;
+}
+.bp:active{background:var(--sage-dark);transform:scale(.98)}
+.bp.amber{background:var(--amber)}
+.bp.amber:active{background:#8a5e1a}
+.bo{
+  padding:8px 14px;background:none;
+  border:1.5px solid var(--sage);color:var(--sage);
+  border-radius:10px;font-size:13px;font-weight:500;
+  cursor:pointer;font-family:inherit;
+  transition:background .12s;
+}
+.bo:active{background:var(--sage-light)}
+.bo.red{border-color:var(--red);color:var(--red)}
+.bo.red:active{background:var(--red-light)}
+.bo.bark{border-color:var(--sand2);color:var(--bark)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  padding:6px 12px;border-radius:20px;font-size:12px;font-weight:500;
+  cursor:pointer;border:1.5px solid var(--sand);color:var(--bark);background:var(--parchment);
+  transition:all .12s;
+}
+.chip.on{background:var(--sage-light);border-color:var(--sage-mid);color:var(--sage-dark)}
+.empty{text-align:center;padding:40px 20px;color:var(--bark)}
+.empty .ei{font-size:48px;margin-bottom:12px}
+.empty p{font-size:14px;line-height:1.6;color:var(--bark)}
+.mem-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--parchment);cursor:pointer}
+.mem-row:last-child{border-bottom:none}
+.ava{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.note-row{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--parchment);border-radius:10px;margin-bottom:6px;font-size:13px}
+.prep-box{background:var(--amber-light);border-radius:12px;padding:12px 14px;margin-bottom:14px;border:1px solid #e8d4a0;font-size:13px;color:var(--bark2);line-height:1.5}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="hdr">
+  <div class="hdr-row">
+    <div class="title-wrap" id="title-wrap" onclick="startEditTitle()">
+      <span class="title-txt" id="title-txt">我家的私房菜</span>
+      <span class="title-pencil">✏️</span>
+    </div>
+    <div class="hbts">
+      <button class="ibt" id="hbtn2" style="display:none" onclick="openMembers()">👨‍👩‍👧</button>
+      <button class="ibt" id="hbtn1" onclick="handleHdr1()">＋</button>
+    </div>
+  </div>
+  <div id="search-area" style="display:none">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="搜索菜名或食材…" oninput="renderRecipes()">
+    </div>
+  </div>
+</div>
+
+<div class="pg on" id="pg0"><div id="rlist"></div></div>
+<div class="pg" id="pg1"><div id="week-content"></div></div>
+<div class="pg" id="pg2"><div id="shop-content"></div></div>
+
+<nav class="bnav">
+  <button class="nb on" onclick="goTab(0)" id="nb0">
+    <div class="ni-wrap"><span class="ni">🍳</span></div><span>菜谱</span>
+  </button>
+  <button class="nb" onclick="goTab(1)" id="nb1">
+    <div class="ni-wrap"><span class="ni">📅</span></div><span>本周</span>
+  </button>
+  <button class="nb" onclick="goTab(2)" id="nb2">
+    <div class="ni-wrap"><span class="ni">🛒</span></div><span>买菜</span>
+  </button>
+</nav>
+</div>
+
+<div class="mo" id="modal" onclick="mOut(event)">
+  <div class="mbox">
+    <div class="mhan"></div>
+    <div class="mhdr"><span class="mttl" id="mttl"></span><button class="mcls" onclick="closeM()">×</button></div>
+    <div class="mbdy" id="mbdy"></div>
+  </div>
+</div>
+<input type="file" id="img-file" accept="image/*" style="display:none" onchange="handleImgUpload(event)">
+
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
+
+const DAYS=['周一','周二','周三','周四','周五','周六','周日'];
+const MEAL_COLS=[
+  {key:'breakfast',label:'早餐',icon:'🌅'},
+  {key:'lunch',label:'午餐',icon:'☀️'},
+  {key:'dinner',label:'晚餐',icon:'🌙'},
+  {key:'fruit',label:'水果零食',icon:'🍎'}
+];
+const AVC=['#4a7c59','#1a60a8','#a0296b','#5a3ab7','#b07828','#b83a2a'];
+const STC=['#4a7c59','#1a60a8','#a0296b','#5a3ab7','#b07828'];
+
+let S={
+  title:'我家的私房菜',
+  recipes:[
+    {id:1,name:'番茄炒鸡蛋',emoji:'🍅',tags:['快手','素菜'],prepDays:0,prepNote:'',ing:[{n:'番茄',q:'2个'},{n:'鸡蛋',q:'3个'},{n:'盐',q:'适量'}],steps:['鸡蛋打散加盐','热锅炒蛋盛出','炒番茄出汁加鸡蛋翻炒'],imgData:''},
+    {id:2,name:'酱牛肉',emoji:'🥩',tags:['荤菜','下饭'],prepDays:1,prepNote:'提前一天腌制牛肉（老抽、生抽、花椒、八角腌制12小时）',ing:[{n:'牛腱子',q:'500g'},{n:'老抽',q:'3勺'},{n:'八角',q:'2个'},{n:'花椒',q:'适量'}],steps:['牛肉提前腌制12小时','冷水下锅焯水','小火焖1.5小时','晾凉切片'],imgData:''},
+    {id:3,name:'清蒸鱼',emoji:'🐟',tags:['荤菜','清淡'],prepDays:0,prepNote:'',ing:[{n:'鲈鱼',q:'1条'},{n:'姜',q:'数片'},{n:'葱',q:'适量'},{n:'豉油',q:'2勺'}],steps:['鱼划刀塞姜','水开蒸8分钟','淋热油和豉油'],imgData:''},
+    {id:4,name:'红烧肉',emoji:'🥩',tags:['荤菜','下饭'],prepDays:0,prepNote:'',ing:[{n:'五花肉',q:'500g'},{n:'老抽',q:'2勺'},{n:'冰糖',q:'适量'},{n:'葱姜蒜',q:'适量'}],steps:['五花肉焯水','炒糖色','加调料焖1小时','大火收汁'],imgData:''},
+  ],
+  members:[
+    {id:'m1',name:'妈妈',emoji:'👩',color:AVC[2],notes:'少盐少油，不吃辣'},
+    {id:'m2',name:'爸爸',emoji:'👨',color:AVC[0],notes:'无特殊要求'},
+    {id:'m3',name:'孩子',emoji:'🧒',color:AVC[3],notes:'不吃香菜，不吃苦瓜'},
+  ],
+  weekly:{},
+  shop:{stores:[{id:'s1',name:'菜市场',color:STC[0]},{id:'s2',name:'超市',color:STC[1]}],items:[],reminds:[]}
+};
+
+function sv(){try{localStorage.setItem('hc_app_v1',JSON.stringify(S))}catch(e){}}
+function ld(){try{const d=localStorage.getItem('hc_app_v1');if(d)S=JSON.parse(d)}catch(e){}}
+ld();
+document.getElementById('title-txt').textContent=S.title||'我家的私房菜';
+
+function startEditTitle(){
+  const w=document.getElementById('title-wrap');
+  w.innerHTML=`<input class="title-input" id="ti" value="${S.title||'我家的私房菜'}" onblur="saveTitle()" onkeydown="if(event.key==='Enter')this.blur()">`;
+  document.getElementById('ti').focus();
+}
+function saveTitle(){
+  const v=document.getElementById('ti')?.value.trim()||'我家的私房菜';
+  S.title=v;sv();
+  const w=document.getElementById('title-wrap');
+  w.innerHTML=`<span class="title-txt" id="title-txt">${v}</span><span class="title-pencil">✏️</span>`;
+  w.onclick=startEditTitle;
+}
+
+function goTab(t){
+  document.querySelectorAll('.nb').forEach((b,i)=>b.classList.toggle('on',i===t));
+  document.querySelectorAll('.pg').forEach((p,i)=>p.classList.toggle('on',i===t));
+  document.getElementById('hbtn1').style.display=t===1?'none':'flex';
+  document.getElementById('hbtn1').textContent=t===2?'🏪':'＋';
+  document.getElementById('hbtn2').style.display=t===1?'flex':'none';
+  document.getElementById('search-area').style.display=t===0?'block':'none';
+  if(t===0)renderRecipes();
+  if(t===1)renderWeekly();
+  if(t===2)renderShop();
+}
+function handleHdr1(){
+  const t=document.querySelectorAll('.nb.on')[0]?.id;
+  if(t==='nb0')openAddRecipe();
+  if(t==='nb2')openStores();
+}
+
+/* ── RECIPES ── */
+function renderRecipes(){
+  const q=(document.getElementById('search-input')?.value||'').trim().toLowerCase();
+  const el=document.getElementById('rlist');
+  let rs=S.recipes;
+  if(q)rs=rs.filter(r=>r.name.toLowerCase().includes(q)||r.ing.some(i=>i.n.toLowerCase().includes(q)));
+  if(!rs.length){
+    el.innerHTML=`<div class="empty"><div class="ei">${q?'🔍':'🍽️'}</div><p>${q?'没有找到「'+q+'」相关菜谱':'还没有菜谱<br>点右上角 ＋ 开始添加'}</p></div>`;
+    return;
+  }
+  el.innerHTML=`<div class="rcard">${rs.map(r=>`
+    <div class="ri" onclick="openDetail(${r.id})">
+      <div class="re">${r.imgData?`<img src="${r.imgData}">`:`${r.emoji}`}</div>
+      <div style="flex:1;min-width:0">
+        <div class="rname">${r.name}</div>
+        ${r.ing.length?`<div class="ring">${r.ing.slice(0,4).map(i=>i.n).join(' · ')}</div>`:''}
+        ${r.prepDays>0?`<div class="remind-badge">⏰ 提前${r.prepDays}天准备</div>`:''}
+      </div>
+      <span class="chevron">›</span>
+    </div>`).join('')}</div>`;
+}
+
+let editRid=null;
+function openDetail(id){
+  editRid=id;
+  const r=S.recipes.find(x=>x.id===id);if(!r)return;
+  document.getElementById('mttl').textContent=r.name;
+  renderDetail(r);openM();
+}
+function renderDetail(r){
+  document.getElementById('mbdy').innerHTML=`
+    <div class="detail-img-wrap" onclick="triggerImg(${r.id})">
+      ${r.imgData?`<img src="${r.imgData}">`:`<div class="detail-img-placeholder">${r.emoji}</div>`}
+      <div class="img-upload-hint">📷 ${r.imgData?'更换图片':'上传菜谱图片'}</div>
+    </div>
+    ${r.prepDays>0?`<div class="prep-box"><b>⏰ 提前 ${r.prepDays} 天准备</b><br>${r.prepNote||''}</div>`:''}
+    <div class="sl">食材</div>
+    <div class="rcard" style="padding:0 14px;margin-bottom:14px">
+      ${r.ing.map((i,x)=>`<div class="ing-row">
+        <input class="editable" style="flex:1" value="${i.n}" onchange="uIng(${r.id},${x},'n',this.value)" placeholder="食材">
+        <input class="editable" style="width:72px;text-align:right" value="${i.q}" onchange="uIng(${r.id},${x},'q',this.value)" placeholder="用量">
+        <button class="rm-btn" onclick="rmIng(${r.id},${x})">×</button>
+      </div>`).join('')}
+      <div style="padding:8px 0"><button class="bo bark" style="width:100%;padding:7px" onclick="addIng(${r.id})">＋ 添加食材</button></div>
+    </div>
+    <div class="sl">做法</div>
+    <div class="rcard" style="padding:0 14px;margin-bottom:14px">
+      ${r.steps.map((s,x)=>`<div class="step-row">
+        <div class="step-num">${x+1}</div>
+        <input class="editable" value="${s}" onchange="uStep(${r.id},${x},this.value)" style="flex:1" placeholder="步骤描述">
+        <button class="rm-btn" onclick="rmStep(${r.id},${x})">×</button>
+      </div>`).join('')}
+      <div style="padding:8px 0"><button class="bo bark" style="width:100%;padding:7px" onclick="addStep(${r.id})">＋ 添加步骤</button></div>
+    </div>
+    <div class="sl">提前准备提醒</div>
+    <div class="rcard" style="padding:14px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="font-size:13px;color:var(--bark)">提前</span>
+        <input type="number" min="0" max="7" value="${r.prepDays||0}" style="width:58px" onchange="uPrep(${r.id},this.value)">
+        <span style="font-size:13px;color:var(--bark)">天（0 = 不需要）</span>
+      </div>
+      <input type="text" value="${r.prepNote||''}" placeholder="说明需要提前准备的内容" onchange="uPrepNote(${r.id},this.value)">
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="bo" style="flex:1" onclick="openMeta(${r.id})">✏️ 基本信息</button>
+      <button class="bo red" onclick="delR(${r.id})">🗑️ 删除</button>
+    </div>`;
+}
+function triggerImg(id){editRid=id;document.getElementById('img-file').click()}
+function handleImgUpload(e){
+  const f=e.target.files[0];if(!f)return;
+  const rd=new FileReader();
+  rd.onload=ev=>{const r=S.recipes.find(x=>x.id===editRid);if(r){r.imgData=ev.target.result;sv();renderDetail(r);renderRecipes()}};
+  rd.readAsDataURL(f);e.target.value='';
+}
+function uIng(id,x,f,v){const r=S.recipes.find(x=>x.id===id);if(r&&r.ing[x])r.ing[x][f]=v;sv()}
+function addIng(id){const r=S.recipes.find(x=>x.id===id);if(r){r.ing.push({n:'',q:''});sv();renderDetail(r)}}
+function rmIng(id,x){const r=S.recipes.find(x=>x.id===id);if(r){r.ing.splice(x,1);sv();renderDetail(r)}}
+function uStep(id,x,v){const r=S.recipes.find(x=>x.id===id);if(r&&r.steps[x]!==undefined){r.steps[x]=v;sv()}}
+function addStep(id){const r=S.recipes.find(x=>x.id===id);if(r){r.steps.push('');sv();renderDetail(r)}}
+function rmStep(id,x){const r=S.recipes.find(x=>x.id===id);if(r){r.steps.splice(x,1);sv();renderDetail(r)}}
+function uPrep(id,v){const r=S.recipes.find(x=>x.id===id);if(r){r.prepDays=parseInt(v)||0;sv();renderDetail(r);renderRecipes()}}
+function uPrepNote(id,v){const r=S.recipes.find(x=>x.id===id);if(r){r.prepNote=v;sv()}}
+function delR(id){if(!confirm('确定删除？'))return;S.recipes=S.recipes.filter(r=>r.id!==id);Object.keys(S.weekly).forEach(k=>{if(Array.isArray(S.weekly[k]))S.weekly[k]=S.weekly[k].filter(m=>m.id!==id)});sv();closeM();renderRecipes()}
+
+function openMeta(id){
+  const r=S.recipes.find(x=>x.id===id);if(!r)return;
+  document.getElementById('mttl').textContent='基本信息';
+  document.getElementById('mbdy').innerHTML=`
+    <div style="display:flex;gap:8px">
+      <div class="fg" style="flex:0 0 64px"><div class="fl">图标</div><input type="text" id="fe" value="${r.emoji}"></div>
+      <div class="fg" style="flex:1"><div class="fl">菜名</div><input type="text" id="fn" value="${r.name}"></div>
+    </div>
+    <div class="fg"><div class="fl">标签</div><div class="chips">${['荤菜','素菜','快手','下饭','清淡','甜','软烂'].map(t=>`<span class="chip${r.tags?.includes(t)?' on':''}" onclick="this.classList.toggle('on')">${t}</span>`).join('')}</div></div>
+    <button class="bp" onclick="saveMeta(${id})">保存</button>`;
+}
+function saveMeta(id){const r=S.recipes.find(x=>x.id===id);if(!r)return;r.name=document.getElementById('fn').value.trim()||r.name;r.emoji=document.getElementById('fe').value||r.emoji;r.tags=[...document.querySelectorAll('.chips .chip.on')].map(c=>c.textContent);sv();closeM();renderRecipes()}
+function openAddRecipe(){
+  document.getElementById('mttl').textContent='添加菜谱';
+  document.getElementById('mbdy').innerHTML=`
+    <div style="display:flex;gap:8px">
+      <div class="fg" style="flex:0 0 64px"><div class="fl">图标</div><input type="text" id="fe" value="🍽️"></div>
+      <div class="fg" style="flex:1"><div class="fl">菜名</div><input type="text" id="fn" placeholder="例：红烧肉"></div>
+    </div>
+    <div class="fg"><div class="fl">标签</div><div class="chips">${['荤菜','素菜','快手','下饭','清淡','甜','软烂'].map(t=>`<span class="chip" onclick="this.classList.toggle('on')">${t}</span>`).join('')}</div></div>
+    <button class="bp" onclick="saveNewR()">添加菜谱</button>`;
+  openM();
+}
+function saveNewR(){
+  const name=document.getElementById('fn').value.trim();if(!name){alert('请输入菜名');return}
+  S.recipes.push({id:Date.now(),name,emoji:document.getElementById('fe').value||'🍽️',tags:[...document.querySelectorAll('.chips .chip.on')].map(c=>c.textContent),prepDays:0,prepNote:'',ing:[],steps:[],imgData:''});
+  sv();closeM();renderRecipes();
+}
+
+/* ── MEMBERS ── */
+function openMembers(){document.getElementById('mttl').textContent='家庭成员';renderMemBody();openM()}
+function renderMemBody(){
+  document.getElementById('mbdy').innerHTML=`
+    <div class="rcard" style="padding:0 16px;margin-bottom:14px">${S.members.map(m=>`
+      <div class="mem-row" onclick="editMem('${m.id}')">
+        <div class="ava" style="background:${m.color}22;color:${m.color}">${m.emoji}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--ink)">${m.name}</div>
+          <div style="font-size:12px;color:var(--bark);margin-top:2px">${m.notes||'无特殊要求'}</div>
+        </div>
+        <span style="color:var(--sand2)">›</span>
+      </div>`).join('')}
+    </div>
+    <button class="bo bark" style="width:100%" onclick="addMem()">＋ 添加家庭成员</button>`;
+}
+function editMem(id){
+  const m=S.members.find(x=>x.id===id);if(!m)return;
+  document.getElementById('mttl').textContent='编辑成员';
+  document.getElementById('mbdy').innerHTML=`
+    <div style="display:flex;gap:8px"><div class="fg" style="flex:0 0 64px"><div class="fl">图标</div><input type="text" id="mi" value="${m.emoji}"></div><div class="fg" style="flex:1"><div class="fl">名称</div><input type="text" id="mn" value="${m.name}"></div></div>
+    <div class="fg"><div class="fl">饮食备注</div><input type="text" id="mo" value="${m.notes||''}" placeholder="例：不吃辣，少盐"></div>
+    <div style="display:flex;gap:8px"><button class="bp" style="flex:1" onclick="saveMem('${id}')">保存</button><button class="bo red" onclick="delMem('${id}')">删除</button></div>`;
+}
+function addMem(){
+  document.getElementById('mttl').textContent='添加成员';
+  document.getElementById('mbdy').innerHTML=`
+    <div style="display:flex;gap:8px"><div class="fg" style="flex:0 0 64px"><div class="fl">图标</div><input type="text" id="mi" value="👤"></div><div class="fg" style="flex:1"><div class="fl">名称</div><input type="text" id="mn" placeholder="妈妈"></div></div>
+    <div class="fg"><div class="fl">饮食备注</div><input type="text" id="mo" placeholder="例：不吃辣，少盐"></div>
+    <button class="bp" onclick="saveMem(null)">添加</button>`;
+}
+function saveMem(id){
+  const name=document.getElementById('mn').value.trim();if(!name){alert('请输入名称');return}
+  const mem={id:id||'m'+Date.now(),name,emoji:document.getElementById('mi').value||'👤',color:AVC[S.members.length%AVC.length],notes:document.getElementById('mo').value.trim()};
+  if(id){const i=S.members.findIndex(m=>m.id===id);if(i>=0)S.members[i]=mem}else S.members.push(mem);
+  sv();renderMemBody();
+}
+function delMem(id){if(!confirm('删除？'))return;S.members=S.members.filter(m=>m.id!==id);sv();renderMemBody()}
+
+/* ── WEEKLY ── */
+function gSlot(o,d,m){return S.weekly[`${o}-${d}-${m}`]||[]}
+function sSlot(o,d,m,a){S.weekly[`${o}-${d}-${m}`]=a;sv()}
+function renderWeekly(){
+  const owners=[{id:'family',name:'家庭餐',emoji:'🏠',color:'#4a7c59'},...S.members.map(m=>({id:m.id,name:m.name,emoji:m.emoji,color:m.color}))];
+  let html='';
+  owners.forEach(ow=>{
+    html+=`<div class="prow-hdr">
+      <div class="prow-ava" style="background:${ow.color}22;color:${ow.color}">${ow.emoji}</div>
+      <span class="prow-name">${ow.name}</span>
+    </div>
+    <div class="week-scroll"><table class="week-table">
+      <thead><tr><th class="day-th"></th>${MEAL_COLS.map(m=>`<th>${m.icon}<br>${m.label}</th>`).join('')}</tr></thead>
+      <tbody>${DAYS.map((d,di)=>`<tr><td class="day-th">${d}</td>${MEAL_COLS.map(mc=>{
+        const iF=mc.key==='fruit',meals=gSlot(ow.id,di,mc.key),has=meals.length>0;
+        return`<td class="wc${has?(iF?' fruit-cell':' has'):''}" onclick="openPicker('${ow.id}',${di},'${mc.key}','${d} ${mc.label}')">
+          ${has?meals.map(m=>iF?`<div class="fruit-chip">${m.emoji} ${m.name}${m.qty?` · ${m.qty}${m.unit||''}`:''}</div>`
+            :`<div class="meal-chip"><span class="mc-e">${m.emoji}</span><span class="mc-n">${m.name}</span><span class="mc-x" onclick="event.stopPropagation();rmSlot('${ow.id}',${di},'${mc.key}','${m.id}')">×</span></div>`
+          ).join(''):`<div class="add-hint">＋</div>`}
+        </td>`;
+      }).join('')}</tr>`).join('')}</tbody>
+    </table></div>`;
+  });
+  html+=`<div style="margin-top:20px"><button class="bp amber" onclick="genList()">📋 生成本周买菜清单</button></div>`;
+  document.getElementById('week-content').innerHTML=html;
+}
+function rmSlot(o,d,m,rid){sSlot(o,d,m,gSlot(o,d,m).filter(x=>String(x.id)!==String(rid)));renderWeekly()}
+function openPicker(owner,day,meal,label){
+  const iF=meal==='fruit',cur=gSlot(owner,day,meal),curIds=cur.map(m=>String(m.id));
+  document.getElementById('mttl').textContent=label;
+  document.getElementById('mbdy').innerHTML=`
+    ${cur.length?`<div class="sl">已选</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">${cur.map(m=>`<span style="background:var(--sage-light);border:1px solid var(--sage-mid);color:var(--sage-dark);border-radius:20px;font-size:12px;padding:4px 10px;cursor:pointer;font-weight:500" onclick="rmSlot('${owner}',${day},'${meal}','${m.id}');openPicker('${owner}',${day},'${meal}','${label}')">${m.emoji} ${m.name} ×</span>`).join('')}</div>`:''}
+    <div class="sl">选择菜品</div>
+    <div class="rcard">${S.recipes.map(r=>`<div class="ri" onclick="togSlot('${owner}',${day},'${meal}',${r.id},'${label}')" style="padding:10px 14px">
+      <div class="re" style="width:36px;height:36px;font-size:22px">${r.imgData?`<img src="${r.imgData}">`:`${r.emoji}`}</div>
+      <div style="flex:1"><div style="font-size:14px;font-weight:500">${r.name}</div></div>
+      ${curIds.includes(String(r.id))?`<span style="color:var(--sage);font-size:18px;font-weight:700">✓</span>`:''}
+    </div>`).join('')}</div>
+    ${iF&&cur.length?`<div class="sl">数量</div>${cur.map(m=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--parchment)"><span style="font-size:13px;flex:1">${m.emoji} ${m.name}</span><input type="number" min="0" value="${m.qty||''}" placeholder="数量" style="width:64px" onchange="setFQ('${owner}',${day},'${m.id}',this.value)"><input type="text" value="${m.unit||''}" placeholder="个/斤" style="width:54px;padding:8px 8px" onchange="setFU('${owner}',${day},'${m.id}',this.value)"></div>`).join('')}`:''}`;
+  openM();
+}
+function togSlot(o,d,m,rid,label){
+  const r=S.recipes.find(x=>x.id===rid);if(!r)return;
+  let a=gSlot(o,d,m);const i=a.findIndex(x=>String(x.id)===String(rid));
+  if(i>=0)a.splice(i,1);else a.push({id:rid,name:r.name,emoji:r.emoji,qty:'',unit:''});
+  sSlot(o,d,m,a);openPicker(o,d,m,label);renderWeekly();
+}
+function setFQ(o,d,id,v){const a=gSlot(o,d,'fruit');const m=a.find(x=>String(x.id)===String(id));if(m){m.qty=v;sSlot(o,d,'fruit',a)}}
+function setFU(o,d,id,v){const a=gSlot(o,d,'fruit');const m=a.find(x=>String(x.id)===String(id));if(m){m.unit=v;sSlot(o,d,'fruit',a)}}
+
+/* ── SHOPPING ── */
+function genList(){
+  const map={};
+  Object.keys(S.weekly).filter(k=>k.startsWith('family-')).forEach(k=>(S.weekly[k]||[]).forEach(m=>{const r=S.recipes.find(x=>x.id===m.id);if(r)r.ing.forEach(i=>{if(!map[i.n])map[i.n]={id:Date.now()+Math.random(),name:i.n,qty:i.q,storeId:S.shop.stores[0]?.id||'',checked:false}})}));
+  Object.keys(S.weekly).filter(k=>!k.startsWith('family-')).forEach(k=>(S.weekly[k]||[]).forEach(m=>{const r=S.recipes.find(x=>x.id===m.id);if(r)r.ing.forEach(i=>{if(!map[i.n])map[i.n]={id:Date.now()+Math.random(),name:i.n,qty:i.q,storeId:S.shop.stores[0]?.id||'',checked:false}})}));
+  const seen=new Set(),reminds=[];
+  Object.values(S.weekly).forEach(a=>(a||[]).forEach(m=>{const r=S.recipes.find(x=>x.id===m.id);if(r&&r.prepDays>0&&!seen.has(r.id)){seen.add(r.id);reminds.push(r)}}));
+  S.shop.items=Object.values(map);S.shop.reminds=reminds;sv();goTab(2);
+}
+
+let inlineStore=null;
+function renderShop(){
+  const c=document.getElementById('shop-content');
+  const rems=S.shop.reminds||[];
+  const ck=S.shop.items.filter(i=>i.checked).length,tot=S.shop.items.length;
+  let html='';
+  if(rems.length)html+=`<div class="remind-card"><div class="rc-ttl">⏰ 本周需要提前准备的菜</div>${rems.map(r=>`<div class="remind-item"><span>${r.emoji}</span><div><b>${r.name}</b> — 提前 ${r.prepDays} 天<br><span style="color:var(--bark);font-size:12px">${r.prepNote||''}</span></div></div>`).join('')}</div>`;
+  if(tot>0)html+=`<div class="prog-card">
+    <div class="prog-label">采购进度</div>
+    <div class="prog-num">${ck} <span style="font-size:16px;color:var(--bark);font-weight:400">/ ${tot} 项</span></div>
+    <div class="pb"><div class="pbf" style="width:${Math.round(ck/tot*100)}%"></div></div>
+  </div>`;
+  if(!tot&&!rems.length)html+=`<div class="empty"><div class="ei">🛒</div><p>先安排本周菜谱<br>再生成买菜清单</p></div><div style="margin-top:14px"><button class="bp amber" onclick="goTab(1)">📅 去安排本周菜谱</button></div>`;
+  S.shop.stores.forEach(st=>{
+    const items=S.shop.items.filter(i=>i.storeId===st.id);
+    const isAdd=inlineStore===st.id;
+    html+=`<div class="ss">
+      <div class="ssh">
+        <span class="ssh-icon">🏪</span>
+        <span class="sn">${st.name}</span>
+        <span class="sc">${items.filter(i=>i.checked).length}/${items.length}</span>
+      </div>
+      ${items.map(it=>`<div class="si">
+        <div class="chk${it.checked?' on':''}" onclick="togSI('${it.id}')">${it.checked?'✓':''}</div>
+        <span class="sin${it.checked?' ck':''}">${it.name}</span>
+        <span class="siq">${it.qty}</span>
+        <button class="sedit" onclick="editSI('${it.id}')">✏️</button>
+      </div>`).join('')}
+      ${isAdd?`<div class="si-editing">
+        <input class="ni-name" type="text" id="ni-n-${st.id}" placeholder="食材名称" onkeydown="niKey(event,'${st.id}')">
+        <input class="ni-qty" type="text" id="ni-q-${st.id}" placeholder="用量" onkeydown="niKey(event,'${st.id}')">
+        <button class="si-confirm" onclick="confirmAdd('${st.id}')">确认</button>
+        <button class="ni-cancel" onclick="cancelAdd()">×</button>
+      </div>`:`<div class="si-add" onclick="startAdd('${st.id}')">
+        <div class="si-add-icon">＋</div>
+        <span class="si-add-txt">添加食材</span>
+      </div>`}
+    </div>`;
+  });
+  const una=S.shop.items.filter(i=>!S.shop.stores.find(s=>s.id===i.storeId));
+  if(una.length)html+=`<div class="ss"><div class="ssh"><span class="ssh-icon">📦</span><span class="sn">未分配</span><span class="sc">${una.length}</span></div>${una.map(it=>`<div class="si"><div class="chk${it.checked?' on':''}" onclick="togSI('${it.id}')">${it.checked?'✓':''}</div><span class="sin${it.checked?' ck':''}">${it.name}</span><span class="siq">${it.qty}</span><button class="sedit" onclick="editSI('${it.id}')">✏️</button></div>`).join('')}</div>`;
+  if(tot>0)html+=`<div style="margin-top:10px"><button class="bo red" style="width:100%;padding:10px" onclick="clearCk()">清除已购买项目</button></div>`;
+  c.innerHTML=html;
+  if(inlineStore){const inp=document.getElementById(`ni-n-${inlineStore}`);if(inp)setTimeout(()=>inp.focus(),40)}
+}
+function startAdd(sid){inlineStore=sid;renderShop()}
+function cancelAdd(){inlineStore=null;renderShop()}
+function confirmAdd(sid){
+  const n=(document.getElementById(`ni-n-${sid}`)?.value||'').trim();
+  const q=(document.getElementById(`ni-q-${sid}`)?.value||'').trim();
+  if(!n){cancelAdd();return}
+  S.shop.items.push({id:Date.now(),name:n,qty:q,storeId:sid,checked:false});
+  sv();inlineStore=null;renderShop();
+}
+function niKey(e,sid){if(e.key==='Enter')confirmAdd(sid);if(e.key==='Escape')cancelAdd()}
+function togSI(id){const i=S.shop.items.find(x=>String(x.id)===String(id));if(i)i.checked=!i.checked;sv();renderShop()}
+function editSI(id){
+  const it=S.shop.items.find(x=>String(x.id)===String(id));if(!it)return;
+  document.getElementById('mttl').textContent='编辑食材';
+  document.getElementById('mbdy').innerHTML=`
+    <div class="fg"><div class="fl">食材名</div><input type="text" id="sin" value="${it.name}"></div>
+    <div class="fg"><div class="fl">用量</div><input type="text" id="siq" value="${it.qty}"></div>
+    <div class="fg"><div class="fl">购买地点</div><select id="sist">${S.shop.stores.map(s=>`<option value="${s.id}"${s.id===it.storeId?' selected':''}>${s.name}</option>`).join('')}</select></div>
+    <button class="bp" onclick="saveSI('${id}')">保存</button>
+    <button class="bo red" style="width:100%;margin-top:8px" onclick="delSI('${id}')">删除</button>`;
+  openM();
+}
+function saveSI(id){const it=S.shop.items.find(x=>String(x.id)===String(id));if(it){it.name=document.getElementById('sin').value.trim();it.qty=document.getElementById('siq').value.trim();it.storeId=document.getElementById('sist').value}sv();closeM();renderShop()}
+function delSI(id){S.shop.items=S.shop.items.filter(x=>String(x.id)!==String(id));sv();closeM();renderShop()}
+function clearCk(){S.shop.items=S.shop.items.filter(i=>!i.checked);sv();renderShop()}
+function openStores(){document.getElementById('mttl').textContent='管理购买地点';renderStoresBody();openM()}
+function renderStoresBody(){
+  document.getElementById('mbdy').innerHTML=`
+    <div style="margin-bottom:12px">${S.shop.stores.map(s=>`<div class="note-row"><div style="width:10px;height:10px;border-radius:50%;background:${s.color};flex-shrink:0"></div><span style="flex:1;font-size:14px">${s.name}</span><button onclick="delSt('${s.id}')" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:18px;line-height:1">×</button></div>`).join('')}</div>
+    <div style="display:flex;gap:8px"><input type="text" id="nstn" placeholder="新地点名称，如：农贸市场" style="flex:1"><button class="bo" onclick="addSt()">添加</button></div>`;
+}
+function addSt(){const n=document.getElementById('nstn').value.trim();if(!n)return;S.shop.stores.push({id:'s'+Date.now(),name:n,color:STC[S.shop.stores.length%STC.length]});sv();renderStoresBody()}
+function delSt(id){S.shop.stores=S.shop.stores.filter(s=>s.id!==id);S.shop.items.forEach(i=>{if(i.storeId===id)i.storeId=''});sv();renderStoresBody()}
+
+function openM(){document.getElementById('modal').classList.add('op')}
+function closeM(){document.getElementById('modal').classList.remove('op')}
+function mOut(e){if(e.target===document.getElementById('modal'))closeM()}
+
+renderRecipes();
+document.getElementById('search-area').style.display='block';
+</script>
+</body>
+</html>
