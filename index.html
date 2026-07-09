@@ -16,145 +16,153 @@
   --sage:#4a7c59;--sl:#edf4ef;--sm:#c6deca;--sd:#2e5237;
   --amb:#b07828;--al:#fdf5e4;--am:#e8d4a0;
   --red:#b83a2a;--rl:#fdecea;
-  --bd:rgba(139,111,94,.13);--sh:0 2px 8px rgba(44,31,20,.07);--r:14px;
+  --sh:0 2px 8px rgba(44,31,20,.07);--r:14px;
 }
 html,body{height:100%;overflow:hidden}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--cream);color:var(--ink);font-size:15px;-webkit-font-smoothing:antialiased}
 .app{display:flex;flex-direction:column;height:100%;max-width:430px;margin:0 auto}
-.hdr{flex-shrink:0;background:var(--cream);padding:calc(env(safe-area-inset-top,0px) + 14px) 16px 10px;border-bottom:1px solid var(--sand);z-index:90}
+/* header */
+.hdr{flex-shrink:0;background:var(--cream);padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 10px;border-bottom:1px solid var(--sand)}
 .hdr-row{display:flex;align-items:center;justify-content:space-between}
-.twrap{display:flex;align-items:center;gap:6px;cursor:pointer}
-.ttxt{font-size:19px;font-weight:700;color:var(--ink)}
-.tpen{font-size:13px;color:var(--sand2)}
-.tinp{font-size:19px;font-weight:700;border:none;border-bottom:2px solid var(--sage);background:transparent;outline:none;color:var(--ink);width:180px;font-family:inherit}
-.hbt{background:none;border:none;cursor:pointer;padding:6px;border-radius:10px;color:var(--bark);font-size:17px;display:flex;align-items:center}
+.twrap{display:flex;align-items:center;gap:5px;cursor:pointer}
+.ttxt{font-size:18px;font-weight:700;color:var(--ink)}
+.tpen{font-size:12px;color:var(--sand2)}
+.tinp{font-size:18px;font-weight:700;border:none;border-bottom:2px solid var(--sage);background:transparent;outline:none;color:var(--ink);width:170px;font-family:inherit}
+.hbts{display:flex;gap:2px}
+.hbt{background:none;border:none;cursor:pointer;padding:6px;border-radius:9px;color:var(--bark);font-size:16px;display:flex;align-items:center}
 .hbt:active{background:var(--parch)}
-.swrap{position:relative;margin-top:9px}
-.sinp{width:100%;padding:8px 12px 8px 34px;border:1.5px solid var(--sand);border-radius:22px;font-size:13px;background:var(--parch);color:var(--ink);outline:none;font-family:inherit}
+.swrap{position:relative;margin-top:8px}
+.sinp{width:100%;padding:7px 12px 7px 32px;border:1.5px solid var(--sand);border-radius:20px;font-size:13px;background:var(--parch);color:var(--ink);outline:none;font-family:inherit}
 .sinp:focus{border-color:var(--sage);background:#fff}
-.sico{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--bark);pointer-events:none}
+.sico{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--bark);pointer-events:none}
+/* layout */
 .body{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-.pg{display:none;padding:12px 14px 20px}
+.pg{display:none;padding:10px 13px 16px}
 .pg.on{display:block}
+/* nav */
 .bnav{flex-shrink:0;background:var(--cream);border-top:1px solid var(--sand);display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
-.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0 7px;font-size:11px;color:var(--bark);background:none;border:none;cursor:pointer;font-family:inherit;transition:color .15s}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0 6px;font-size:10px;color:var(--bark);background:none;border:none;cursor:pointer;font-family:inherit;transition:color .15s}
 .nb.on{color:var(--sage)}
-.nbw{width:38px;height:26px;border-radius:13px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.nbw{width:34px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;transition:background .15s}
 .nb.on .nbw{background:var(--sl)}
-.nbi{font-size:18px;line-height:1}
-/* recipe */
+.nbi{font-size:17px;line-height:1}
+/* cards */
 .rcard{background:#fff;border-radius:var(--r);margin-bottom:8px;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--sand)}
-.ri{display:flex;align-items:center;gap:11px;padding:12px 14px;border-bottom:1px solid var(--parch);cursor:pointer;transition:background .1s}
+.ri{display:flex;align-items:center;gap:10px;padding:11px 13px;border-bottom:1px solid var(--parch);cursor:pointer;transition:background .1s}
 .ri:last-child{border-bottom:none}
 .ri:active{background:var(--parch)}
-.re{font-size:24px;width:44px;height:44px;background:var(--parch);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;position:relative}
-.re img{width:100%;height:100%;object-fit:cover;border-radius:11px}
-.rname{font-size:14px;font-weight:600;color:var(--ink);line-height:1.3}
+.re{font-size:22px;width:42px;height:42px;background:var(--parch);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.re img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.rname{font-size:14px;font-weight:600;color:var(--ink)}
 .ring{font-size:11px;color:var(--bark);margin-top:2px}
-.rstatus{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px;margin-top:4px}
-.s-l{background:var(--al);color:var(--amb);border:1px solid var(--am)}
-.s-d{background:var(--sl);color:var(--sd);border:1px solid var(--sm)}
-.chev{color:var(--sand2);font-size:15px;flex-shrink:0}
-.pdot{width:7px;height:7px;border-radius:50%;background:var(--amb);position:absolute;top:3px;right:3px}
-.fbar{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
-.fbar::-webkit-scrollbar{display:none}
-.fc{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid var(--sand);color:var(--bark);background:var(--parch);white-space:nowrap;transition:all .12s}
-.fc.on{background:var(--sl);border-color:var(--sm);color:var(--sd)}
-/* weekly */
-.wscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -14px;padding:0 14px 6px}
+.chev{color:var(--sand2);font-size:14px;flex-shrink:0}
+.pdot{width:6px;height:6px;border-radius:50%;background:var(--amb);display:inline-block;margin-left:4px;vertical-align:middle}
+/* weekly (本周) */
+.day-block{background:#fff;border-radius:var(--r);margin-bottom:8px;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--sand)}
+.day-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;background:var(--parch);border-bottom:1px solid var(--sand)}
+.day-label{font-size:13px;font-weight:700;color:var(--ink)}
+.day-done{font-size:11px;color:var(--sage);font-weight:600}
+.day-remind{font-size:11px;color:var(--amb);background:var(--al);padding:2px 8px;border-radius:20px;border:1px solid var(--am)}
+/* 横向滚动表格 */
+.day-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.day-scroll::-webkit-scrollbar{display:none}
+.day-table{border-collapse:collapse;min-width:360px;width:100%}
+.day-table th{font-size:10px;font-weight:600;color:var(--bark);padding:6px 8px;text-align:center;border-bottom:1px solid var(--sand);white-space:nowrap;background:var(--cream)}
+.day-table .row-lbl{font-size:11px;font-weight:600;color:var(--ink);padding:6px 8px;white-space:nowrap;vertical-align:top;background:#fff;border-right:1px solid var(--sand)}
+.day-cell{padding:5px 6px;vertical-align:top;border-left:1px solid var(--parch);min-width:90px}
+.meal-item{display:flex;align-items:center;gap:5px;padding:3px 6px;background:var(--sl);border-radius:7px;margin-bottom:3px;cursor:pointer;transition:opacity .15s}
+.meal-item.done{opacity:.35}
+.meal-item input[type=checkbox]{width:14px;height:14px;accent-color:var(--sage);flex-shrink:0;cursor:pointer}
+.meal-item-name{font-size:11px;color:var(--sd);font-weight:500;flex:1;line-height:1.3}
+.remind-block{background:var(--al);border-radius:var(--r);padding:10px 13px;margin-bottom:8px;border:1.5px solid var(--am)}
+.remind-ttl{font-size:11px;font-weight:600;color:var(--amb);margin-bottom:6px}
+.remind-row{display:flex;align-items:flex-start;gap:7px;padding:3px 0;font-size:12px;color:var(--bark2)}
+/* next week */
+.wscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -13px;padding:0 13px 4px}
 .wscroll::-webkit-scrollbar{display:none}
 .wtbl{border-collapse:separate;border-spacing:4px;min-width:480px}
 .wtbl th{font-size:10px;font-weight:600;color:var(--bark);padding:2px 3px;text-align:center;white-space:nowrap}
 .dth{font-size:10px;font-weight:600;color:var(--ink);padding:2px 5px;text-align:left;white-space:nowrap;width:30px}
-.wc{background:#fff;border:1.5px solid var(--sand);border-radius:10px;padding:5px;min-height:56px;cursor:pointer;vertical-align:top;width:86px;transition:all .12s}
+.wc{background:#fff;border:1.5px solid var(--sand);border-radius:9px;padding:4px;min-height:52px;cursor:pointer;vertical-align:top;width:84px;transition:all .12s}
 .wc.has{border-color:var(--sm);background:var(--sl)}
-.wc .ah{color:var(--sand2);text-align:center;font-size:18px;padding-top:9px}
-.mchip{font-size:9px;font-weight:500;background:#fff;border-radius:5px;padding:2px 4px;margin-bottom:2px;display:flex;align-items:center;gap:2px;border:1px solid var(--sand)}
+.wc .ah{color:var(--sand2);text-align:center;font-size:17px;padding-top:8px}
+.mchip{font-size:9px;font-weight:500;background:#fff;border-radius:4px;padding:2px 4px;margin-bottom:2px;display:flex;align-items:center;gap:2px;border:1px solid var(--sand)}
 .mcn{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--sd)}
-.mcx{color:var(--bark);cursor:pointer;font-size:11px;flex-shrink:0}
-.prow{display:flex;align-items:center;gap:7px;margin:16px 0 7px}
-.pava{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.mcx{color:var(--bark);cursor:pointer;font-size:10px;flex-shrink:0}
+.prow{display:flex;align-items:center;gap:6px;margin:14px 0 6px}
+.pava{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
 /* shopping */
-.sttl{font-size:11px;font-weight:600;color:var(--bark);letter-spacing:.5px;text-transform:uppercase;margin:14px 0 6px}
-.scard{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--sand);margin-bottom:8px}
-.si{display:flex;align-items:center;gap:9px;padding:10px 13px;border-bottom:1px solid var(--parch);background:#fff}
+.loc-tabs{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;position:sticky;top:0;background:var(--cream);padding-top:2px;z-index:10}
+.loc-tabs::-webkit-scrollbar{display:none}
+.ltab{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--sand);color:var(--bark);background:#fff;white-space:nowrap;transition:all .12s;flex-shrink:0}
+.ltab.on{background:var(--sage);border-color:var(--sage);color:#fff}
+.ltab.done-tab{background:var(--parch);border-color:var(--sand2);color:var(--sand2);text-decoration:line-through}
+.scard{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--sand);margin-bottom:10px}
+.si{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--parch);background:#fff;cursor:pointer;transition:background .1s}
 .si:last-child{border-bottom:none}
-.chk{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--sand2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:11px;transition:all .15s}
-.chk.on{background:var(--sage);border-color:var(--sage);color:#fff}
-.sin{flex:1;font-size:14px;color:var(--ink)}
-.sin.ck{color:var(--bark);text-decoration:line-through}
-.siq{font-size:12px;color:var(--bark)}
-.sloc{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:500;cursor:pointer;flex-shrink:0;border:1px solid var(--sand);background:var(--parch);color:var(--bark);white-space:nowrap;transition:all .12s}
-.sloc.set{background:var(--sl);border-color:var(--sm);color:var(--sd)}
-.sedit{background:none;border:none;color:var(--sand2);cursor:pointer;font-size:13px;padding:2px 3px}
-.si-add{display:flex;align-items:center;gap:9px;padding:9px 13px;cursor:pointer;background:#fff;color:var(--bark);border-top:1px dashed var(--sand)}
-.si-add-ico{width:20px;height:20px;border-radius:50%;border:1.5px dashed var(--sand2);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--bark);flex-shrink:0}
-.si-edit-row{display:flex;align-items:center;gap:6px;padding:8px 11px;background:var(--sl);border-top:1.5px solid var(--sm)}
-.si-edit-row input{padding:6px 9px;border:1.5px solid var(--sm);border-radius:9px;font-size:13px;background:#fff;color:var(--ink);font-family:inherit;outline:none}
-.si-edit-row input:focus{border-color:var(--sage)}
-.ni-n{flex:1;min-width:0}
-.ni-q{width:62px}
-.si-ok{background:var(--sage);color:#fff;border:none;border-radius:9px;padding:6px 11px;font-size:13px;cursor:pointer;font-family:inherit;font-weight:500}
-.ni-x{background:none;border:none;color:var(--bark);font-size:19px;cursor:pointer;padding:0 2px;line-height:1}
-.prog-card{background:#fff;border-radius:var(--r);padding:13px 14px;margin-bottom:10px;box-shadow:var(--sh);border:1px solid var(--sand)}
+.si:active{background:var(--parch)}
+.si.selected{background:var(--sl)}
+.si-sel{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--sand2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;transition:all .15s}
+.si-sel.on{background:var(--sage);border-color:var(--sage);color:#fff}
+.sin{flex:1;font-size:13px;color:var(--ink)}
+.siq{font-size:11px;color:var(--bark)}
+.sloc-tag{font-size:10px;padding:1px 6px;border-radius:20px;font-weight:500;border:1px solid var(--sm);background:var(--sl);color:var(--sd)}
+.shop-action-bar{position:sticky;bottom:0;background:var(--cream);padding:8px 0 4px;border-top:1px solid var(--sand);margin:0 -13px;padding:8px 13px 4px}
+.prog-card{background:#fff;border-radius:var(--r);padding:11px 13px;margin-bottom:8px;box-shadow:var(--sh);border:1px solid var(--sand)}
 .pb{background:var(--sand);border-radius:20px;height:5px;margin-top:3px}
 .pbf{background:var(--sage);height:5px;border-radius:20px;transition:width .3s}
-.remind-card{background:var(--al);border-radius:var(--r);padding:12px 14px;margin-bottom:10px;border:1.5px solid var(--am)}
-.remind-ttl{font-size:11px;font-weight:600;color:var(--amb);margin-bottom:7px}
-.remind-item{font-size:12px;color:var(--bark2);padding:3px 0;display:flex;gap:7px;line-height:1.4}
-.store-hdr{display:flex;align-items:center;gap:8px;padding:10px 13px;background:var(--parch);border:1px solid var(--sand);border-bottom:none;border-radius:var(--r) var(--r) 0 0}
-.store-nm{font-size:13px;font-weight:600;color:var(--ink);flex:1}
-.store-ct{font-size:11px;color:var(--bark);background:var(--sand);padding:2px 7px;border-radius:20px}
 /* modal */
 .mo{position:fixed;inset:0;background:rgba(44,31,20,.5);z-index:200;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .2s}
 .mo.op{opacity:1;pointer-events:all}
-.mbox{background:var(--cream);border-radius:22px 22px 0 0;width:100%;max-width:430px;margin:0 auto;padding:0 0 env(safe-area-inset-bottom,14px);max-height:92vh;overflow-y:auto;transform:translateY(40px);transition:transform .22s cubic-bezier(.32,1,.4,1)}
+.mbox{background:var(--cream);border-radius:20px 20px 0 0;width:100%;max-width:430px;margin:0 auto;padding:0 0 env(safe-area-inset-bottom,12px);max-height:90vh;overflow-y:auto;transform:translateY(40px);transition:transform .22s cubic-bezier(.32,1,.4,1)}
 .mo.op .mbox{transform:translateY(0)}
-.mhan{width:38px;height:4px;background:var(--sand2);border-radius:2px;margin:11px auto 0}
-.mhdr{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--sand)}
-.mttl{font-size:16px;font-weight:700;color:var(--ink)}
-.mbdy{padding:14px 18px 18px}
-.mcls{background:none;border:none;font-size:21px;color:var(--bark);cursor:pointer;padding:3px;line-height:1}
-.dimgwrap{width:100%;border-radius:12px;overflow:hidden;background:var(--parch);margin-bottom:14px;min-height:110px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
-.dimgwrap img{width:100%;display:block}
-.dph{font-size:48px;padding:28px}
-.iuhint{position:absolute;bottom:8px;right:8px;background:rgba(44,31,20,.5);color:#fff;font-size:11px;padding:3px 8px;border-radius:20px}
-.editable{border:none;border-bottom:1px solid var(--sand2);background:transparent;font-size:13px;color:var(--ink);font-family:inherit;outline:none;width:100%;padding:2px 0;transition:border-color .15s}
+.mhan{width:36px;height:4px;background:var(--sand2);border-radius:2px;margin:10px auto 0}
+.mhdr{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--sand);flex-shrink:0}
+.mttl{font-size:15px;font-weight:700;color:var(--ink)}
+.mbdy{padding:12px 16px 16px}
+.mcls{background:none;border:none;font-size:20px;color:var(--bark);cursor:pointer;padding:3px;line-height:1}
+/* recipe detail editable */
+.editable{border:none;border-bottom:1px solid var(--sand2);background:transparent;font-size:13px;color:var(--ink);font-family:inherit;outline:none;width:100%;padding:2px 0}
 .editable:focus{border-bottom-color:var(--sage)}
-.ingrow{display:flex;gap:7px;align-items:center;padding:7px 0;border-bottom:1px solid var(--parch)}
+.ingrow{display:flex;gap:6px;align-items:center;padding:6px 0;border-bottom:1px solid var(--parch)}
 .ingrow:last-child{border-bottom:none}
-.steprow{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--parch)}
+.steprow{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--parch)}
 .steprow:last-child{border-bottom:none}
-.snum{width:20px;height:20px;min-width:20px;background:var(--sage);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px}
-.rmbtn{background:none;border:none;color:var(--sand2);cursor:pointer;font-size:17px;padding:0 1px;line-height:1}
-.sl2{font-size:10px;font-weight:600;color:var(--bark);letter-spacing:.7px;text-transform:uppercase;margin:13px 0 6px}
-input[type=text],textarea,select{width:100%;padding:9px 11px;border:1.5px solid var(--sand);border-radius:11px;font-size:13px;background:var(--parch);color:var(--ink);font-family:inherit;outline:none;-webkit-appearance:none;transition:border-color .15s}
+.snum{width:19px;height:19px;min-width:19px;background:var(--sage);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px}
+.rmbtn{background:none;border:none;color:var(--sand2);cursor:pointer;font-size:16px;padding:0 1px;line-height:1}
+.dimgwrap{width:100%;border-radius:11px;overflow:hidden;background:var(--parch);margin-bottom:12px;min-height:100px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+.dimgwrap img{width:100%;display:block}
+.dph{font-size:44px;padding:24px}
+.iuhint{position:absolute;bottom:7px;right:7px;background:rgba(44,31,20,.5);color:#fff;font-size:10px;padding:3px 7px;border-radius:18px}
+.prep-box{background:var(--al);border-radius:9px;padding:9px 12px;margin-bottom:12px;border:1px solid var(--am);font-size:12px;color:var(--bark2);line-height:1.5}
+.sl2{font-size:10px;font-weight:600;color:var(--bark);letter-spacing:.6px;text-transform:uppercase;margin:11px 0 5px}
+/* form */
+input[type=text],textarea,select{width:100%;padding:8px 10px;border:1.5px solid var(--sand);border-radius:10px;font-size:13px;background:var(--parch);color:var(--ink);font-family:inherit;outline:none;-webkit-appearance:none;transition:border-color .15s}
 input[type=text]:focus,textarea:focus,select:focus{border-color:var(--sage);background:#fff}
-input[type=number]{width:60px;padding:7px 9px;border:1.5px solid var(--sand);border-radius:9px;font-size:13px;background:var(--parch);color:var(--ink);font-family:inherit;outline:none}
+input[type=number]{width:58px;padding:6px 8px;border:1.5px solid var(--sand);border-radius:8px;font-size:13px;background:var(--parch);color:var(--ink);font-family:inherit;outline:none}
 input[type=number]:focus{border-color:var(--sage);background:#fff}
-.fl{font-size:11px;font-weight:600;color:var(--bark);margin-bottom:4px}
-.fg{margin-bottom:12px}
-.bp{width:100%;padding:12px;background:var(--sage);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:4px;transition:background .15s}
+.fl{font-size:11px;font-weight:600;color:var(--bark);margin-bottom:3px}
+.fg{margin-bottom:10px}
+.bp{width:100%;padding:11px;background:var(--sage);color:#fff;border:none;border-radius:11px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:4px;transition:background .15s}
 .bp:active{background:var(--sd)}
 .bp.amb{background:var(--amb)}
-.bo{padding:7px 12px;background:none;border:1.5px solid var(--sage);color:var(--sage);border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit}
+.bo{padding:6px 11px;background:none;border:1.5px solid var(--sage);color:var(--sage);border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit}
 .bo.red{border-color:var(--red);color:var(--red)}
 .bo.bark{border-color:var(--sand2);color:var(--bark)}
-.chips{display:flex;flex-wrap:wrap;gap:5px}
-.chip{padding:5px 11px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid var(--sand);color:var(--bark);background:var(--parch);transition:all .12s}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1.5px solid var(--sand);color:var(--bark);background:var(--parch)}
 .chip.on{background:var(--sl);border-color:var(--sm);color:var(--sd)}
-.empty{text-align:center;padding:36px 20px;color:var(--bark)}
-.empty .ei{font-size:44px;margin-bottom:10px}
+.empty{text-align:center;padding:32px 20px;color:var(--bark)}
+.empty .ei{font-size:42px;margin-bottom:8px}
 .empty p{font-size:13px;line-height:1.6}
-.mem-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--parch);cursor:pointer}
+.mem-row{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--parch);cursor:pointer}
 .mem-row:last-child{border-bottom:none}
-.ava{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.note-row{display:flex;align-items:center;gap:7px;padding:8px 11px;background:var(--parch);border-radius:9px;margin-bottom:5px;font-size:13px}
-.prep-box{background:var(--al);border-radius:10px;padding:10px 13px;margin-bottom:13px;border:1px solid var(--am);font-size:12px;color:var(--bark2);line-height:1.5}
-.loc-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--parch);cursor:pointer;transition:background .1s}
+.ava{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.note-row{display:flex;align-items:center;gap:7px;padding:7px 10px;background:var(--parch);border-radius:8px;margin-bottom:5px;font-size:12px}
+.loc-opt{display:flex;align-items:center;gap:9px;padding:10px 13px;border-bottom:1px solid var(--parch);cursor:pointer;transition:background .1s}
 .loc-opt:last-child{border-bottom:none}
 .loc-opt:active{background:var(--parch)}
-.loc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.loc-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -165,24 +173,27 @@ input[type=number]:focus{border-color:var(--sage);background:#fff}
       <span class="ttxt" id="ttxt">我家的私房菜</span>
       <span class="tpen">✏️</span>
     </div>
-    <div style="display:flex;gap:3px">
+    <div class="hbts">
       <button class="hbt" id="hb2" style="display:none" onclick="openMembers()">👨‍👩‍👧</button>
       <button class="hbt" id="hb1" onclick="hdrAct()">＋</button>
     </div>
   </div>
   <div id="swrap" style="display:none">
-    <div class="swrap"><span class="sico">🔍</span><input class="sinp" id="srch" placeholder="搜索菜名或食材…" oninput="renderRecipes()"></div>
+    <div class="swrap"><span class="sico">🔍</span>
+    <input class="sinp" id="srch" placeholder="搜索菜名或食材…" oninput="renderRecipes()"></div>
   </div>
 </div>
 <div class="body">
   <div class="pg on" id="pg0"><div id="rlist"></div></div>
-  <div class="pg" id="pg1"><div id="wk"></div></div>
-  <div class="pg" id="pg2"><div id="shop"></div></div>
+  <div class="pg" id="pg1"><div id="thisweek"></div></div>
+  <div class="pg" id="pg2"><div id="nextweek"></div></div>
+  <div class="pg" id="pg3"><div id="shop"></div></div>
 </div>
 <nav class="bnav">
   <button class="nb on" id="nb0" onclick="goTab(0)"><div class="nbw"><span class="nbi">🍳</span></div><span>菜谱</span></button>
-  <button class="nb" id="nb1" onclick="goTab(1)"><div class="nbw"><span class="nbi">📅</span></div><span>本周</span></button>
-  <button class="nb" id="nb2" onclick="goTab(2)"><div class="nbw"><span class="nbi">🛒</span></div><span>买菜</span></button>
+  <button class="nb" id="nb1" onclick="goTab(1)"><div class="nbw"><span class="nbi">📋</span></div><span>本周</span></button>
+  <button class="nb" id="nb2" onclick="goTab(2)"><div class="nbw"><span class="nbi">📅</span></div><span>下周</span></button>
+  <button class="nb" id="nb3" onclick="goTab(3)"><div class="nbw"><span class="nbi">🛒</span></div><span>买菜</span></button>
 </nav>
 </div>
 <div class="mo" id="modal" onclick="mOut(event)">
@@ -195,29 +206,38 @@ input[type=number]:focus{border-color:var(--sage);background:#fff}
 <input type="file" id="imgfile" accept="image/*" style="display:none" onchange="onImg(event)">
 <script>
 const DAYS=['周一','周二','周三','周四','周五','周六','周日'];
-const MEALS=[{k:'breakfast',l:'早餐',i:'🌅'},{k:'lunch',l:'午餐',i:'☀️'},{k:'dinner',l:'晚餐',i:'🌙'},{k:'fruit',l:'水果零食',i:'🍎'}];
+const MEALS_NW=[{k:'breakfast',l:'早餐',i:'🌅'},{k:'lunch',l:'午餐',i:'☀️'},{k:'dinner',l:'晚餐',i:'🌙'}];
 const AVC=['#4a7c59','#1a60a8','#a0296b','#5a3ab7','#b07828','#b83a2a'];
 const STC=['#4a7c59','#1a60a8','#a0296b','#5a3ab7','#b07828'];
+
 let S={
   title:'我家的私房菜',
   recipes:[
-    {id:1,name:'红烧肉',emoji:'🥩',status:'learning',tags:['荤菜','下饭'],prepDays:0,prepNote:'',ing:[{n:'五花肉',q:'500g'},{n:'老抽',q:'2勺'},{n:'冰糖',q:'适量'},{n:'葱姜蒜',q:'适量'}],steps:['五花肉焯水','炒糖色','加调料焖1小时','大火收汁'],imgData:''},
-    {id:2,name:'酱牛肉',emoji:'🥩',status:'learning',tags:['荤菜'],prepDays:1,prepNote:'提前一天腌制牛肉12小时',ing:[{n:'牛腱子',q:'500g'},{n:'老抽',q:'3勺'},{n:'八角',q:'2个'},{n:'花椒',q:'适量'}],steps:['提前腌制12小时','冷水焯水','小火焖1.5小时','晾凉切片'],imgData:''},
-    {id:3,name:'番茄炒鸡蛋',emoji:'🍅',status:'done',tags:['素菜','快手'],prepDays:0,prepNote:'',ing:[{n:'番茄',q:'2个'},{n:'鸡蛋',q:'3个'},{n:'盐',q:'适量'}],steps:['鸡蛋打散加盐','热锅炒蛋盛出','炒番茄出汁加鸡蛋翻炒'],imgData:''},
-    {id:4,name:'清蒸鱼',emoji:'🐟',status:'learning',tags:['荤菜','清淡'],prepDays:0,prepNote:'',ing:[{n:'鲈鱼',q:'1条'},{n:'姜',q:'数片'},{n:'葱',q:'适量'},{n:'豉油',q:'2勺'}],steps:['鱼划刀塞姜','水开蒸8分钟','淋热油和豉油'],imgData:''},
+    {id:1,name:'红烧肉',emoji:'🥩',prepDays:0,prepNote:'',ing:[{n:'五花肉',q:'500g'},{n:'老抽',q:'2勺'},{n:'冰糖',q:'适量'},{n:'葱姜蒜',q:'适量'}],steps:['五花肉焯水','炒糖色','加调料焖1小时','大火收汁'],imgData:''},
+    {id:2,name:'酱牛肉',emoji:'🥩',prepDays:1,prepNote:'提前一天腌制牛肉12小时',ing:[{n:'牛腱子',q:'500g'},{n:'老抽',q:'3勺'},{n:'八角',q:'2个'},{n:'花椒',q:'适量'}],steps:['提前腌制12小时','冷水焯水','小火焖1.5小时','晾凉切片'],imgData:''},
+    {id:3,name:'番茄炒鸡蛋',emoji:'🍅',prepDays:0,prepNote:'',ing:[{n:'番茄',q:'2个'},{n:'鸡蛋',q:'3个'},{n:'盐',q:'适量'}],steps:['鸡蛋打散加盐','热锅炒蛋盛出','炒番茄出汁加鸡蛋翻炒'],imgData:''},
+    {id:4,name:'清蒸鱼',emoji:'🐟',prepDays:0,prepNote:'',ing:[{n:'鲈鱼',q:'1条'},{n:'姜',q:'数片'},{n:'葱',q:'适量'},{n:'豉油',q:'2勺'}],steps:['鱼划刀塞姜','水开蒸8分钟','淋热油和豉油'],imgData:''},
   ],
   members:[
     {id:'m1',name:'妈妈',emoji:'👩',color:AVC[2],notes:'少盐少油，不吃辣'},
     {id:'m2',name:'爸爸',emoji:'👨',color:AVC[0],notes:'无特殊要求'},
-    {id:'m3',name:'孩子',emoji:'🧒',color:AVC[3],notes:'不吃香菜，不吃苦瓜'},
+    {id:'m3',name:'孩子',emoji:'🧒',color:AVC[3],notes:'不吃香菜'},
   ],
-  weekly:{},
-  shop:{stores:[{id:'s1',name:'菜市场',color:STC[0]},{id:'s2',name:'超市',color:STC[1]}],items:[],reminds:[]}
+  thisWeek:{},   // key: "dayIdx-mealKey-ownerId" => [{id,name,emoji,done}]
+  nextWeek:{},   // key: "ownerId-dayIdx-mealKey" => [{id,name,emoji}]
+  tempRecipes:[], // for next-week only, not in library
+  shop:{stores:[{id:'s1',name:'菜市场',color:STC[0]},{id:'s2',name:'超市',color:STC[1]}],items:[],selectedIds:[]}
 };
-function sv(){try{localStorage.setItem('hcv8',JSON.stringify(S))}catch(e){}}
-function ld(){try{const d=localStorage.getItem('hcv8');if(d)S=JSON.parse(d)}catch(e){}}
+
+function sv(){try{localStorage.setItem('hcv9',JSON.stringify(S))}catch(e){}}
+function ld(){try{const d=localStorage.getItem('hcv9');if(d)S=JSON.parse(d)}catch(e){}}
 ld();
 document.getElementById('ttxt').textContent=S.title||'我家的私房菜';
+if(!S.thisWeek)S.thisWeek={};
+if(!S.nextWeek)S.nextWeek={};
+if(!S.tempRecipes)S.tempRecipes=[];
+if(!S.shop.selectedIds)S.shop.selectedIds=[];
+
 function startTitle(){
   const w=document.getElementById('twrap');
   w.innerHTML=`<input class="tinp" id="ti" value="${S.title}" onblur="saveTitle()" onkeydown="if(event.key==='Enter')this.blur()">`;
@@ -230,90 +250,106 @@ function saveTitle(){
   w.innerHTML=`<span class="ttxt" id="ttxt">${v}</span><span class="tpen">✏️</span>`;
   w.onclick=startTitle;
 }
+
 let curTab=0;
 function goTab(t){
   curTab=t;
   document.querySelectorAll('.nb').forEach((b,i)=>b.classList.toggle('on',i===t));
   document.querySelectorAll('.pg').forEach((p,i)=>p.classList.toggle('on',i===t));
-  document.getElementById('hb1').style.display=t===1?'none':'flex';
-  document.getElementById('hb1').textContent=t===2?'🏪':'＋';
-  document.getElementById('hb2').style.display=t===1?'flex':'none';
+  // header buttons
+  document.getElementById('hb1').style.display=(t===1||t===3)?'none':'flex';
+  document.getElementById('hb1').textContent=t===3?'🏪':(t===2?'':'＋');
+  document.getElementById('hb2').style.display=(t===1||t===2)?'flex':'none';
   document.getElementById('swrap').style.display=t===0?'block':'none';
   document.querySelector('.body').scrollTop=0;
   if(t===0)renderRecipes();
-  if(t===1)renderWeekly();
-  if(t===2)renderShop();
+  if(t===1)renderThisWeek();
+  if(t===2)renderNextWeek();
+  if(t===3)renderShop();
 }
-function hdrAct(){if(curTab===0)openAddR();if(curTab===2)openStores()}
-let rFilter='all';
+function hdrAct(){
+  if(curTab===0)openAddR();
+  if(curTab===3)openStores();
+}
+
+/* ══════════════════════════════
+   RECIPES
+══════════════════════════════ */
+function allRecipes(){return [...S.recipes,...S.tempRecipes]}
+
 function renderRecipes(){
   const q=(document.getElementById('srch')?.value||'').trim().toLowerCase();
   let rs=S.recipes;
-  if(rFilter==='learning')rs=rs.filter(r=>r.status==='learning');
-  if(rFilter==='done')rs=rs.filter(r=>r.status==='done');
   if(q)rs=rs.filter(r=>r.name.toLowerCase().includes(q)||r.ing.some(i=>i.n.toLowerCase().includes(q)));
   const el=document.getElementById('rlist');
-  const fhtml=`<div class="fbar">
-    <span class="fc${rFilter==='all'?' on':''}" onclick="setRF('all')">全部 ${S.recipes.length}</span>
-    <span class="fc${rFilter==='learning'?' on':''}" onclick="setRF('learning')">📖 待学习 ${S.recipes.filter(r=>r.status==='learning').length}</span>
-    <span class="fc${rFilter==='done'?' on':''}" onclick="setRF('done')">✓ 已掌握 ${S.recipes.filter(r=>r.status==='done').length}</span>
-  </div>`;
-  if(!rs.length){el.innerHTML=fhtml+`<div class="empty"><div class="ei">${q?'🔍':'🍽️'}</div><p>${q?'没有找到相关菜谱':'还没有菜谱<br>点右上角 ＋ 添加'}</p></div>`;return}
-  el.innerHTML=fhtml+`<div class="rcard">${rs.map(r=>`<div class="ri" onclick="openDetail(${r.id})">
-    <div class="re">${r.imgData?`<img src="${r.imgData}">`:`${r.emoji}`}${r.prepDays>0?'<div class="pdot"></div>':''}</div>
-    <div style="flex:1;min-width:0">
-      <div class="rname">${r.name}</div>
-      ${r.ing.length?`<div class="ring">${r.ing.slice(0,4).map(i=>i.n).join(' · ')}</div>`:''}
-      <div class="rstatus ${r.status==='done'?'s-d':'s-l'}">${r.status==='done'?'✓ 已掌握':'📖 待学习'}</div>
-    </div>
-    <span class="chev">›</span>
-  </div>`).join('')}</div>`;
+  if(!rs.length){
+    el.innerHTML=`<div class="empty"><div class="ei">${q?'🔍':'🍽️'}</div><p>${q?'没有找到相关菜谱':'还没有菜谱<br>点右上角 ＋ 添加'}</p></div>`;
+    return;
+  }
+  el.innerHTML=`<div class="rcard">${rs.map(r=>`
+    <div class="ri" onclick="openDetail(${r.id})">
+      <div class="re">${r.imgData?`<img src="${r.imgData}">`:`${r.emoji}`}</div>
+      <div style="flex:1;min-width:0">
+        <div class="rname">${r.name}${r.prepDays>0?'<span class="pdot"></span>':''}</div>
+        ${r.ing.length?`<div class="ring">${r.ing.slice(0,4).map(i=>i.n).join(' · ')}</div>`:''}
+      </div>
+      <span class="chev">›</span>
+    </div>`).join('')}</div>`;
 }
-function setRF(f){rFilter=f;renderRecipes()}
+
 let editRid=null;
 function openDetail(id){
-  editRid=id;const r=S.recipes.find(x=>x.id===id);if(!r)return;
-  document.getElementById('mttl').textContent=r.name;renderDetail(r);openM();
+  editRid=id;
+  const r=S.recipes.find(x=>x.id===id);if(!r)return;
+  document.getElementById('mttl').textContent=r.name;
+  renderDetail(r);openM();
 }
 function renderDetail(r){
   document.getElementById('mbdy').innerHTML=`
     <div class="dimgwrap" onclick="trigImg(${r.id})">
       ${r.imgData?`<img src="${r.imgData}">`:`<div class="dph">${r.emoji}</div>`}
-      <div class="iuhint">📷 ${r.imgData?'更换':'上传菜谱图片'}</div>
+      <div class="iuhint">📷 ${r.imgData?'更换':'上传图片'}</div>
     </div>
-    <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
-      <div class="rstatus ${r.status==='done'?'s-d':'s-l'}" style="font-size:12px;padding:4px 10px">${r.status==='done'?'✓ 已掌握':'📖 待学习'}</div>
-      <button onclick="toggleSt(${r.id})" style="background:none;border:1px solid var(--sand2);color:var(--bark);border-radius:20px;font-size:12px;padding:4px 10px;cursor:pointer;font-family:inherit">${r.status==='done'?'改为待学习':'标记已掌握'}</button>
-      ${r.prepDays>0?`<div style="font-size:11px;background:var(--al);color:var(--amb);padding:4px 8px;border-radius:20px;border:1px solid var(--am)">⏰ 提前${r.prepDays}天</div>`:''}
-    </div>
-    ${r.prepDays>0?`<div class="prep-box"><b>⏰ 提前 ${r.prepDays} 天准备：</b>${r.prepNote||''}</div>`:''}
+    ${r.prepDays>0?`<div class="prep-box"><b>⏰ 提前${r.prepDays}天：</b>${r.prepNote||''}</div>`:''}
     <div class="sl2">食材</div>
-    <div class="rcard" style="padding:0 12px;margin-bottom:13px">
-      ${r.ing.map((i,x)=>`<div class="ingrow"><input class="editable" style="flex:1" value="${i.n}" onchange="uIng(${r.id},${x},'n',this.value)" placeholder="食材"><input class="editable" style="width:68px;text-align:right" value="${i.q}" onchange="uIng(${r.id},${x},'q',this.value)" placeholder="用量"><button class="rmbtn" onclick="rmIng(${r.id},${x})">×</button></div>`).join('')}
-      <div style="padding:7px 0"><button class="bo bark" style="width:100%;padding:6px" onclick="addIng(${r.id})">＋ 添加食材</button></div>
+    <div class="rcard" style="padding:0 11px;margin-bottom:11px">
+      ${r.ing.map((i,x)=>`<div class="ingrow">
+        <input class="editable" style="flex:1" value="${i.n}" onchange="uIng(${r.id},${x},'n',this.value)" placeholder="食材">
+        <input class="editable" style="width:65px;text-align:right" value="${i.q}" onchange="uIng(${r.id},${x},'q',this.value)" placeholder="用量">
+        <button class="rmbtn" onclick="rmIng(${r.id},${x})">×</button>
+      </div>`).join('')}
+      <div style="padding:6px 0"><button class="bo bark" style="width:100%;padding:5px" onclick="addIng(${r.id})">＋ 食材</button></div>
     </div>
-    <div class="sl2">做法步骤</div>
-    <div class="rcard" style="padding:0 12px;margin-bottom:13px">
-      ${r.steps.map((s,x)=>`<div class="steprow"><div class="snum">${x+1}</div><input class="editable" value="${s}" onchange="uStep(${r.id},${x},this.value)" style="flex:1" placeholder="步骤描述"><button class="rmbtn" onclick="rmStep(${r.id},${x})">×</button></div>`).join('')}
-      <div style="padding:7px 0"><button class="bo bark" style="width:100%;padding:6px" onclick="addStep(${r.id})">＋ 添加步骤</button></div>
+    <div class="sl2">做法</div>
+    <div class="rcard" style="padding:0 11px;margin-bottom:11px">
+      ${r.steps.map((s,x)=>`<div class="steprow">
+        <div class="snum">${x+1}</div>
+        <input class="editable" value="${s}" onchange="uStep(${r.id},${x},this.value)" style="flex:1" placeholder="步骤">
+        <button class="rmbtn" onclick="rmStep(${r.id},${x})">×</button>
+      </div>`).join('')}
+      <div style="padding:6px 0"><button class="bo bark" style="width:100%;padding:5px" onclick="addStep(${r.id})">＋ 步骤</button></div>
     </div>
-    <div class="sl2">提前准备提醒</div>
-    <div class="rcard" style="padding:12px;margin-bottom:14px">
-      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
-        <span style="font-size:13px;color:var(--bark)">提前</span>
+    <div class="sl2">提前准备</div>
+    <div class="rcard" style="padding:11px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="font-size:12px;color:var(--bark)">提前</span>
         <input type="number" min="0" max="7" value="${r.prepDays||0}" onchange="uPrep(${r.id},this.value)">
-        <span style="font-size:13px;color:var(--bark)">天（0=不需要）</span>
+        <span style="font-size:12px;color:var(--bark)">天（0=不需要）</span>
       </div>
-      <input type="text" value="${r.prepNote||''}" placeholder="提前准备的内容说明" onchange="uPrepNote(${r.id},this.value)">
+      <input type="text" value="${r.prepNote||''}" placeholder="提前准备说明" onchange="uPrepNote(${r.id},this.value)">
     </div>
     <div style="display:flex;gap:7px">
-      <button class="bo" style="flex:1" onclick="openMeta(${r.id})">✏️ 基本信息</button>
+      <button class="bo" style="flex:1" onclick="openMeta(${r.id})">✏️ 名称/图标</button>
       <button class="bo red" onclick="delR(${r.id})">🗑️</button>
     </div>`;
 }
 function trigImg(id){editRid=id;document.getElementById('imgfile').click()}
-function onImg(e){const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=ev=>{const r=S.recipes.find(x=>x.id===editRid);if(r){r.imgData=ev.target.result;sv();renderDetail(r);renderRecipes()}};rd.readAsDataURL(f);e.target.value=''}
-function toggleSt(id){const r=S.recipes.find(x=>x.id===id);if(r){r.status=r.status==='done'?'learning':'done';sv();renderDetail(r);renderRecipes()}}
+function onImg(e){
+  const f=e.target.files[0];if(!f)return;
+  const rd=new FileReader();
+  rd.onload=ev=>{const r=S.recipes.find(x=>x.id===editRid);if(r){r.imgData=ev.target.result;sv();renderDetail(r);renderRecipes()}};
+  rd.readAsDataURL(f);e.target.value='';
+}
 function uIng(id,x,f,v){const r=S.recipes.find(x=>x.id===id);if(r&&r.ing[x])r.ing[x][f]=v;sv()}
 function addIng(id){const r=S.recipes.find(x=>x.id===id);if(r){r.ing.push({n:'',q:''});sv();renderDetail(r)}}
 function rmIng(id,x){const r=S.recipes.find(x=>x.id===id);if(r){r.ing.splice(x,1);sv();renderDetail(r)}}
@@ -322,49 +358,314 @@ function addStep(id){const r=S.recipes.find(x=>x.id===id);if(r){r.steps.push('')
 function rmStep(id,x){const r=S.recipes.find(x=>x.id===id);if(r){r.steps.splice(x,1);sv();renderDetail(r)}}
 function uPrep(id,v){const r=S.recipes.find(x=>x.id===id);if(r){r.prepDays=parseInt(v)||0;sv();renderDetail(r);renderRecipes()}}
 function uPrepNote(id,v){const r=S.recipes.find(x=>x.id===id);if(r){r.prepNote=v;sv()}}
-function delR(id){if(!confirm('确定删除？'))return;S.recipes=S.recipes.filter(r=>r.id!==id);Object.keys(S.weekly).forEach(k=>{if(Array.isArray(S.weekly[k]))S.weekly[k]=S.weekly[k].filter(m=>m.id!==id)});sv();closeM();renderRecipes()}
+function delR(id){
+  if(!confirm('确定删除？'))return;
+  S.recipes=S.recipes.filter(r=>r.id!==id);
+  sv();closeM();renderRecipes();
+}
 function openMeta(id){
   const r=S.recipes.find(x=>x.id===id);if(!r)return;
-  document.getElementById('mttl').textContent='基本信息';
+  document.getElementById('mttl').textContent='名称与图标';
   document.getElementById('mbdy').innerHTML=`
-    <div style="display:flex;gap:8px"><div class="fg" style="flex:0 0 62px"><div class="fl">图标</div><input type="text" id="fe" value="${r.emoji}"></div><div class="fg" style="flex:1"><div class="fl">菜名</div><input type="text" id="fn" value="${r.name}"></div></div>
-    <div class="fg"><div class="fl">标签</div><div class="chips">${['荤菜','素菜','快手','下饭','清淡','甜','软烂'].map(t=>`<span class="chip${r.tags?.includes(t)?' on':''}" onclick="this.classList.toggle('on')">${t}</span>`).join('')}</div></div>
+    <div style="display:flex;gap:8px">
+      <div class="fg" style="flex:0 0 60px"><div class="fl">图标</div><input type="text" id="fe" value="${r.emoji}"></div>
+      <div class="fg" style="flex:1"><div class="fl">菜名</div><input type="text" id="fn" value="${r.name}"></div>
+    </div>
     <button class="bp" onclick="saveMeta(${id})">保存</button>`;
 }
-function saveMeta(id){const r=S.recipes.find(x=>x.id===id);if(!r)return;r.name=document.getElementById('fn').value.trim()||r.name;r.emoji=document.getElementById('fe').value||r.emoji;r.tags=[...document.querySelectorAll('.chips .chip.on')].map(c=>c.textContent);sv();closeM();renderRecipes()}
+function saveMeta(id){
+  const r=S.recipes.find(x=>x.id===id);if(!r)return;
+  r.name=document.getElementById('fn').value.trim()||r.name;
+  r.emoji=document.getElementById('fe').value||r.emoji;
+  sv();closeM();renderRecipes();
+}
 function openAddR(){
   document.getElementById('mttl').textContent='添加菜谱';
   document.getElementById('mbdy').innerHTML=`
-    <div style="display:flex;gap:8px"><div class="fg" style="flex:0 0 62px"><div class="fl">图标</div><input type="text" id="fe" value="🍽️"></div><div class="fg" style="flex:1"><div class="fl">菜名</div><input type="text" id="fn" placeholder="例：红烧肉"></div></div>
-    <div class="fg"><div class="fl">学习状态</div><select id="fst"><option value="learning">📖 待学习</option><option value="done">✓ 已掌握</option></select></div>
-    <div class="fg"><div class="fl">标签</div><div class="chips">${['荤菜','素菜','快手','下饭','清淡','甜','软烂'].map(t=>`<span class="chip" onclick="this.classList.toggle('on')">${t}</span>`).join('')}</div></div>
-    <button class="bp" onclick="saveNewR()">添加菜谱</button>`;
+    <div style="display:flex;gap:8px">
+      <div class="fg" style="flex:0 0 60px"><div class="fl">图标</div><input type="text" id="fe" value="🍽️"></div>
+      <div class="fg" style="flex:1"><div class="fl">菜名</div><input type="text" id="fn" placeholder="例：红烧肉"></div>
+    </div>
+    <div class="sl2">食材</div>
+    <div id="add-ings">
+      <div class="ingrow" id="ai0"><input class="editable" style="flex:1" id="ain0" placeholder="食材名"><input class="editable" style="width:65px;text-align:right" id="aiq0" placeholder="用量"><button class="rmbtn" onclick="document.getElementById('ai0').remove()">×</button></div>
+    </div>
+    <div style="margin:6px 0 12px"><button class="bo bark" style="width:100%;padding:5px" onclick="addIngRow()">＋ 添加食材</button></div>
+    <div class="sl2">做法（可选）</div>
+    <div id="add-steps">
+      <div class="steprow" id="as0"><div class="snum">1</div><input class="editable" id="asn0" style="flex:1" placeholder="步骤描述"><button class="rmbtn" onclick="document.getElementById('as0').remove()">×</button></div>
+    </div>
+    <div style="margin:6px 0 12px"><button class="bo bark" style="width:100%;padding:5px" onclick="addStepRow()">＋ 添加步骤</button></div>
+    <button class="bp" onclick="saveNewR()">保存菜谱</button>`;
   openM();
+}
+let aiCount=1,asCount=1;
+function addIngRow(){
+  const c=document.getElementById('add-ings');
+  const x=aiCount++;
+  c.insertAdjacentHTML('beforeend',`<div class="ingrow" id="ai${x}"><input class="editable" style="flex:1" id="ain${x}" placeholder="食材名"><input class="editable" style="width:65px;text-align:right" id="aiq${x}" placeholder="用量"><button class="rmbtn" onclick="document.getElementById('ai${x}').remove()">×</button></div>`);
+}
+function addStepRow(){
+  const c=document.getElementById('add-steps');
+  const x=asCount++;
+  const n=c.children.length+1;
+  c.insertAdjacentHTML('beforeend',`<div class="steprow" id="as${x}"><div class="snum">${n}</div><input class="editable" id="asn${x}" style="flex:1" placeholder="步骤描述"><button class="rmbtn" onclick="document.getElementById('as${x}').remove()">×</button></div>`);
 }
 function saveNewR(){
   const name=document.getElementById('fn').value.trim();if(!name){alert('请输入菜名');return}
-  S.recipes.push({id:Date.now(),name,emoji:document.getElementById('fe').value||'🍽️',status:document.getElementById('fst').value,tags:[...document.querySelectorAll('.chips .chip.on')].map(c=>c.textContent),prepDays:0,prepNote:'',ing:[],steps:[],imgData:''});
+  const emoji=document.getElementById('fe').value||'🍽️';
+  const ing=[...document.getElementById('add-ings').querySelectorAll('.ingrow')].map(row=>{
+    const inputs=row.querySelectorAll('input');return{n:inputs[0]?.value.trim()||'',q:inputs[1]?.value.trim()||''};
+  }).filter(i=>i.n);
+  const steps=[...document.getElementById('add-steps').querySelectorAll('.steprow')].map(row=>row.querySelector('input')?.value.trim()||'').filter(Boolean);
+  S.recipes.push({id:Date.now(),name,emoji,prepDays:0,prepNote:'',ing,steps,imgData:''});
+  aiCount=1;asCount=1;
   sv();closeM();renderRecipes();
 }
+
+/* ══════════════════════════════
+   THIS WEEK (本周)
+══════════════════════════════ */
+// key: dayIdx + '-' + mealKey + '-' + ownerId
+// value: [{id, name, emoji, done}]
+function twKey(d,m,o){return`${d}-${m}-${o}`}
+function getTW(d,m,o){return S.thisWeek[twKey(d,m,o)]||[]}
+function setTW(d,m,o,arr){S.thisWeek[twKey(d,m,o)]=arr;sv()}
+
+function renderThisWeek(){
+  const owners=[{id:'family',name:'家庭餐',emoji:'🏠',color:'#4a7c59'},...S.members.map(m=>({id:m.id,name:m.name,emoji:m.emoji,color:m.color}))];
+  const el=document.getElementById('thisweek');
+
+  // prep reminders
+  const allIds=new Set();
+  Object.values(S.thisWeek).forEach(arr=>(arr||[]).forEach(m=>allIds.add(m.id)));
+  const reminds=S.recipes.filter(r=>allIds.has(r.id)&&r.prepDays>0);
+
+  let html='';
+  if(reminds.length){
+    html+=`<div class="remind-block"><div class="remind-ttl">⏰ 本周需要提前准备</div>
+      ${reminds.map(r=>`<div class="remind-row"><span>${r.emoji}</span><div><b>${r.name}</b> — 提前${r.prepDays}天<br><span style="font-size:11px">${r.prepNote||''}</span></div></div>`).join('')}
+    </div>`;
+  }
+
+  DAYS.forEach((day,di)=>{
+    // check if all meals for all owners are done → hide day
+    let totalItems=0,doneItems=0;
+    owners.forEach(ow=>{
+      MEALS_NW.forEach(mc=>{
+        const arr=getTW(di,mc.k,ow.id);
+        arr.forEach(item=>{totalItems++;if(item.done)doneItems++;});
+      });
+    });
+    if(totalItems>0&&totalItems===doneItems)return; // hide completed days
+
+    html+=`<div class="day-block">
+      <div class="day-hdr">
+        <span class="day-label">第${di+1}天 · ${day}</span>
+        ${totalItems>0?`<span style="font-size:11px;color:var(--bark)">${doneItems}/${totalItems}</span>`:''}
+      </div>
+      <div class="day-scroll">
+        <table class="day-table">
+          <thead><tr><th></th>${MEALS_NW.map(m=>`<th>${m.i} ${m.l}</th>`).join('')}</tr></thead>
+          <tbody>${owners.map(ow=>`<tr>
+            <td class="row-lbl"><div style="display:flex;align-items:center;gap:4px"><span style="font-size:13px">${ow.emoji}</span><span>${ow.name}</span></div></td>
+            ${MEALS_NW.map(mc=>{
+              const arr=getTW(di,mc.k,ow.id);
+              return`<td class="day-cell">${arr.length?arr.map(item=>`
+                <div class="meal-item${item.done?' done':''}">
+                  <input type="checkbox" ${item.done?'checked':''} onchange="toggleTW(${di},'${mc.k}','${ow.id}','${item.id}',this.checked)">
+                  <span class="meal-item-name">${item.emoji} ${item.name}</span>
+                </div>`).join(''):'<span style="color:var(--sand2);font-size:11px">—</span>'}</td>`;
+            }).join('')}
+          </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+  });
+
+  if(!html.includes('day-block'))html+=`<div class="empty"><div class="ei">🎉</div><p>本周所有餐食已完成！<br>去下周页规划新一周</p></div>`;
+  el.innerHTML=html;
+}
+
+function toggleTW(di,mk,oid,itemId,checked){
+  const arr=getTW(di,mk,oid);
+  const item=arr.find(x=>String(x.id)===String(itemId));
+  if(item)item.done=checked;
+  setTW(di,mk,oid,arr);
+  renderThisWeek();
+}
+
+/* ══════════════════════════════
+   NEXT WEEK (下周)
+══════════════════════════════ */
+function nwKey(o,d,m){return`${o}-${d}-${m}`}
+function getNW(o,d,m){return S.nextWeek[nwKey(o,d,m)]||[]}
+function setNW(o,d,m,arr){S.nextWeek[nwKey(o,d,m)]=arr;sv()}
+
+function renderNextWeek(){
+  const owners=[{id:'family',name:'家庭餐',emoji:'🏠',color:'#4a7c59'},...S.members.map(m=>({id:m.id,name:m.name,emoji:m.emoji,color:m.color}))];
+  const el=document.getElementById('nextweek');
+  let html='';
+  owners.forEach(ow=>{
+    html+=`<div class="prow"><div class="pava" style="background:${ow.color}22;color:${ow.color}">${ow.emoji}</div><span style="font-size:13px;font-weight:600">${ow.name}</span></div>
+    <div class="wscroll"><table class="wtbl">
+      <thead><tr><th class="dth"></th>${MEALS_NW.map(m=>`<th>${m.i}<br>${m.l}</th>`).join('')}</tr></thead>
+      <tbody>${DAYS.map((d,di)=>`<tr><td class="dth">${d}</td>${MEALS_NW.map(mc=>{
+        const meals=getNW(ow.id,di,mc.k),has=meals.length>0;
+        return`<td class="wc${has?' has':''}" onclick="openNWPicker('${ow.id}',${di},'${mc.k}','${d} ${mc.l}')">
+          ${has?meals.map(m=>`<div class="mchip"><span style="font-size:11px;flex-shrink:0">${m.emoji}</span><span class="mcn">${m.name}</span><span class="mcx" onclick="event.stopPropagation();rmNW('${ow.id}',${di},'${mc.k}','${m.id}')">×</span></div>`).join(''):`<div class="ah">＋</div>`}
+        </td>`;
+      }).join('')}</tr>`).join('')}
+      </tbody>
+    </table></div>`;
+  });
+  html+=`<div style="margin-top:16px;display:flex;gap:8px">
+    <button class="bp" style="flex:1" onclick="saveNextWeek()">✅ 保存并生成买菜清单</button>
+  </div>`;
+  el.innerHTML=html;
+}
+
+function rmNW(o,d,m,rid){setNW(o,d,m,getNW(o,d,m).filter(x=>String(x.id)!==String(rid)));renderNextWeek()}
+
+function openNWPicker(owner,day,meal,label){
+  const cur=getNW(owner,day,meal),curIds=cur.map(m=>String(m.id));
+  const allR=[...S.recipes,...S.tempRecipes];
+  document.getElementById('mttl').textContent=label;
+  document.getElementById('mbdy').innerHTML=`
+    ${cur.length?`<div class="sl2">已选</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">${cur.map(m=>`<span style="background:var(--sl);border:1px solid var(--sm);color:var(--sd);border-radius:20px;font-size:11px;padding:3px 8px;cursor:pointer" onclick="rmNW('${owner}',${day},'${meal}','${m.id}');openNWPicker('${owner}',${day},'${meal}','${label}')">${m.emoji} ${m.name} ×</span>`).join('')}</div>`:''}
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <span class="sl2" style="margin:0">选择菜品</span>
+      <button class="bo bark" style="padding:4px 10px;font-size:11px" onclick="openNewTempRecipe('${owner}',${day},'${meal}','${label}')">＋ 新建菜品</button>
+    </div>
+    <div class="rcard">${allR.map(r=>`<div class="ri" onclick="togNW('${owner}',${day},'${meal}',${r.id},'${label}',${!!r.temp})" style="padding:9px 12px">
+      <div class="re" style="width:34px;height:34px;font-size:20px">${r.imgData?`<img src="${r.imgData}">`:`${r.emoji}`}</div>
+      <div style="flex:1"><div style="font-size:13px;font-weight:500">${r.name}</div>${r.temp?`<div style="font-size:10px;color:var(--bark)">临时菜品</div>`:''}</div>
+      ${curIds.includes(String(r.id))?`<span style="color:var(--sage);font-size:16px;font-weight:700">✓</span>`:''}
+    </div>`).join('')}</div>`;
+  openM();
+}
+
+function togNW(o,d,m,rid,label,isTemp){
+  const allR=[...S.recipes,...S.tempRecipes];
+  const r=allR.find(x=>x.id===rid);if(!r)return;
+  let a=getNW(o,d,m);const i=a.findIndex(x=>String(x.id)===String(rid));
+  if(i>=0)a.splice(i,1);else a.push({id:rid,name:r.name,emoji:r.emoji});
+  setNW(o,d,m,a);openNWPicker(o,d,m,label);renderNextWeek();
+}
+
+function openNewTempRecipe(owner,day,meal,label){
+  document.getElementById('mttl').textContent='新建临时菜品';
+  document.getElementById('mbdy').innerHTML=`
+    <div style="display:flex;gap:8px">
+      <div class="fg" style="flex:0 0 60px"><div class="fl">图标</div><input type="text" id="tfe" value="🍽️"></div>
+      <div class="fg" style="flex:1"><div class="fl">菜名</div><input type="text" id="tfn" placeholder="例：炒青菜"></div>
+    </div>
+    <div class="sl2">食材（用于生成买菜清单）</div>
+    <div id="ting-wrap">
+      <div class="ingrow" id="ti0"><input class="editable" style="flex:1" id="tin0" placeholder="食材名"><input class="editable" style="width:65px;text-align:right" id="tiq0" placeholder="用量"><button class="rmbtn" onclick="document.getElementById('ti0').remove()">×</button></div>
+    </div>
+    <div style="margin:6px 0 12px"><button class="bo bark" style="width:100%;padding:5px" onclick="addTIngRow()">＋ 添加食材</button></div>
+    <div style="display:flex;gap:7px">
+      <button class="bp" style="flex:1" onclick="saveTempR('${owner}',${day},'${meal}','${label}')">创建并选中</button>
+      <button class="bo bark" onclick="openNWPicker('${owner}',${day},'${meal}','${label}')">取消</button>
+    </div>`;
+  let tiCount=1;
+  window.addTIngRow=function(){
+    const c=document.getElementById('ting-wrap');
+    const x=tiCount++;
+    c.insertAdjacentHTML('beforeend',`<div class="ingrow" id="ti${x}"><input class="editable" style="flex:1" id="tin${x}" placeholder="食材名"><input class="editable" style="width:65px;text-align:right" id="tiq${x}" placeholder="用量"><button class="rmbtn" onclick="document.getElementById('ti${x}').remove()">×</button></div>`);
+  };
+}
+
+function saveTempR(owner,day,meal,label){
+  const name=document.getElementById('tfn').value.trim();if(!name){alert('请输入菜名');return}
+  const emoji=document.getElementById('tfe').value||'🍽️';
+  const ing=[...document.getElementById('ting-wrap').querySelectorAll('.ingrow')].map(row=>{
+    const inputs=row.querySelectorAll('input');return{n:inputs[0]?.value.trim()||'',q:inputs[1]?.value.trim()||''};
+  }).filter(i=>i.n);
+  const tempId='tmp'+Date.now();
+  S.tempRecipes.push({id:tempId,name,emoji,ing,steps:[],prepDays:0,prepNote:'',imgData:'',temp:true});
+  let a=getNW(owner,day,meal);
+  a.push({id:tempId,name,emoji});
+  setNW(owner,day,meal,a);
+  sv();openNWPicker(owner,day,meal,label);renderNextWeek();
+}
+
+function saveNextWeek(){
+  // copy nextWeek plan into thisWeek (replace), generate shopping list
+  // merge into thisWeek
+  Object.keys(S.nextWeek).forEach(key=>{
+    const parts=key.split('-'); // ownerId-dayIdx-mealKey  (ownerId may have 'm' prefix)
+    // key format: ownerId-dayIdx-mealKey
+    const lastDash2=key.lastIndexOf('-');
+    const mealKey=key.substring(lastDash2+1);
+    const rest=key.substring(0,lastDash2);
+    const lastDash1=rest.lastIndexOf('-');
+    const dayIdx=rest.substring(lastDash1+1);
+    const ownerId=rest.substring(0,lastDash1);
+    const twk=twKey(dayIdx,mealKey,ownerId);
+    // convert to thisWeek format (add done:false)
+    S.thisWeek[twk]=(S.nextWeek[key]||[]).map(m=>({...m,done:false}));
+  });
+  // generate shopping list
+  const allR=[...S.recipes,...S.tempRecipes];
+  const map={};
+  Object.keys(S.nextWeek).filter(k=>k.startsWith('family-')).forEach(k=>(S.nextWeek[k]||[]).forEach(m=>{
+    const r=allR.find(x=>x.id===m.id);
+    if(r)r.ing.forEach(i=>{if(!map[i.n])map[i.n]={id:Date.now()+Math.random(),name:i.n,qty:i.q,storeId:null,checked:false,selected:false}});
+  }));
+  Object.keys(S.nextWeek).filter(k=>!k.startsWith('family-')).forEach(k=>(S.nextWeek[k]||[]).forEach(m=>{
+    const r=allR.find(x=>x.id===m.id);
+    if(r)r.ing.forEach(i=>{if(!map[i.n])map[i.n]={id:Date.now()+Math.random(),name:i.n,qty:i.q,storeId:null,checked:false,selected:false}});
+  }));
+  S.shop.items=Object.values(map);
+  S.shop.selectedIds=[];
+  // clear next week after saving
+  S.nextWeek={};
+  S.tempRecipes=[];
+  sv();
+  alert('已保存为本周计划，买菜清单已生成！');
+  goTab(3);
+}
+
+/* ══════════════════════════════
+   MEMBERS
+══════════════════════════════ */
 function openMembers(){document.getElementById('mttl').textContent='家庭成员';renderMemBody();openM()}
 function renderMemBody(){
   document.getElementById('mbdy').innerHTML=`
-    <div class="rcard" style="padding:0 14px;margin-bottom:12px">${S.members.map(m=>`<div class="mem-row" onclick="editMem('${m.id}')"><div class="ava" style="background:${m.color}22;color:${m.color}">${m.emoji}</div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600">${m.name}</div><div style="font-size:12px;color:var(--bark);margin-top:2px">${m.notes||'无特殊要求'}</div></div><span style="color:var(--sand2)">›</span></div>`).join('')}</div>
+    <div class="rcard" style="padding:0 13px;margin-bottom:10px">${S.members.map(m=>`
+      <div class="mem-row" onclick="editMem('${m.id}')">
+        <div class="ava" style="background:${m.color}22;color:${m.color}">${m.emoji}</div>
+        <div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600">${m.name}</div><div style="font-size:11px;color:var(--bark);margin-top:1px">${m.notes||'无特殊要求'}</div></div>
+        <span style="color:var(--sand2)">›</span>
+      </div>`).join('')}
+    </div>
     <button class="bo bark" style="width:100%" onclick="addMem()">＋ 添加成员</button>`;
 }
 function editMem(id){
   const m=S.members.find(x=>x.id===id);if(!m)return;
   document.getElementById('mttl').textContent='编辑成员';
   document.getElementById('mbdy').innerHTML=`
-    <div style="display:flex;gap:8px"><div class="fg" style="flex:0 0 62px"><div class="fl">图标</div><input type="text" id="mi" value="${m.emoji}"></div><div class="fg" style="flex:1"><div class="fl">名称</div><input type="text" id="mn" value="${m.name}"></div></div>
-    <div class="fg"><div class="fl">饮食备注</div><input type="text" id="mo" value="${m.notes||''}" placeholder="例：不吃辣，少盐"></div>
-    <div style="display:flex;gap:7px"><button class="bp" style="flex:1" onclick="saveMem('${id}')">保存</button><button class="bo red" onclick="delMem('${id}')">删除</button></div>`;
+    <div style="display:flex;gap:8px">
+      <div class="fg" style="flex:0 0 60px"><div class="fl">图标</div><input type="text" id="mi" value="${m.emoji}"></div>
+      <div class="fg" style="flex:1"><div class="fl">名称</div><input type="text" id="mn" value="${m.name}"></div>
+    </div>
+    <div class="fg"><div class="fl">饮食备注</div><input type="text" id="mo" value="${m.notes||''}" placeholder="例：不吃辣"></div>
+    <div style="display:flex;gap:7px">
+      <button class="bp" style="flex:1" onclick="saveMem('${id}')">保存</button>
+      <button class="bo red" onclick="delMem('${id}')">删除</button>
+    </div>`;
 }
 function addMem(){
   document.getElementById('mttl').textContent='添加成员';
   document.getElementById('mbdy').innerHTML=`
-    <div style="display:flex;gap:8px"><div class="fg" style="flex:0 0 62px"><div class="fl">图标</div><input type="text" id="mi" value="👤"></div><div class="fg" style="flex:1"><div class="fl">名称</div><input type="text" id="mn" placeholder="妈妈"></div></div>
-    <div class="fg"><div class="fl">饮食备注</div><input type="text" id="mo" placeholder="例：不吃辣，少盐"></div>
+    <div style="display:flex;gap:8px">
+      <div class="fg" style="flex:0 0 60px"><div class="fl">图标</div><input type="text" id="mi" value="👤"></div>
+      <div class="fg" style="flex:1"><div class="fl">名称</div><input type="text" id="mn" placeholder="妈妈"></div>
+    </div>
+    <div class="fg"><div class="fl">饮食备注</div><input type="text" id="mo" placeholder="例：不吃辣"></div>
     <button class="bp" onclick="saveMem(null)">添加</button>`;
 }
 function saveMem(id){
@@ -374,137 +675,168 @@ function saveMem(id){
   sv();renderMemBody();
 }
 function delMem(id){if(!confirm('删除？'))return;S.members=S.members.filter(m=>m.id!==id);sv();renderMemBody()}
-function gSlot(o,d,m){return S.weekly[`${o}-${d}-${m}`]||[]}
-function sSlot(o,d,m,a){S.weekly[`${o}-${d}-${m}`]=a;sv()}
-function renderWeekly(){
-  const owners=[{id:'family',name:'家庭餐',emoji:'🏠',color:'#4a7c59'},...S.members.map(m=>({id:m.id,name:m.name,emoji:m.emoji,color:m.color}))];
-  let html='';
-  owners.forEach(ow=>{
-    html+=`<div class="prow"><div class="pava" style="background:${ow.color}22;color:${ow.color}">${ow.emoji}</div><span style="font-size:13px;font-weight:600">${ow.name}</span></div>
-    <div class="wscroll"><table class="wtbl">
-      <thead><tr><th class="dth"></th>${MEALS.map(m=>`<th>${m.i}<br>${m.l}</th>`).join('')}</tr></thead>
-      <tbody>${DAYS.map((d,di)=>`<tr><td class="dth">${d}</td>${MEALS.map(mc=>{
-        const meals=gSlot(ow.id,di,mc.k),has=meals.length>0;
-        return`<td class="wc${has?' has':''}" onclick="openPicker('${ow.id}',${di},'${mc.k}','${d} ${mc.l}')">
-          ${has?meals.map(m=>`<div class="mchip"><span style="font-size:12px;flex-shrink:0">${m.emoji}</span><span class="mcn">${m.name}</span><span class="mcx" onclick="event.stopPropagation();rmSlot('${ow.id}',${di},'${mc.k}','${m.id}')">×</span></div>`).join(''):`<div class="ah">＋</div>`}
-        </td>`;
-      }).join('')}</tr>`).join('')}</tbody>
-    </table></div>`;
-  });
-  html+=`<div style="margin-top:18px"><button class="bp amb" onclick="genList()">📋 生成本周买菜清单</button></div>`;
-  document.getElementById('wk').innerHTML=html;
-}
-function rmSlot(o,d,m,rid){sSlot(o,d,m,gSlot(o,d,m).filter(x=>String(x.id)!==String(rid)));renderWeekly()}
-function openPicker(owner,day,meal,label){
-  const cur=gSlot(owner,day,meal),curIds=cur.map(m=>String(m.id));
-  document.getElementById('mttl').textContent=label;
-  document.getElementById('mbdy').innerHTML=`
-    ${cur.length?`<div class="sl2">已选</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px">${cur.map(m=>`<span style="background:var(--sl);border:1px solid var(--sm);color:var(--sd);border-radius:20px;font-size:12px;padding:3px 9px;cursor:pointer;font-weight:500" onclick="rmSlot('${owner}',${day},'${meal}','${m.id}');openPicker('${owner}',${day},'${meal}','${label}')">${m.emoji} ${m.name} ×</span>`).join('')}</div>`:''}
-    <div class="sl2">选择菜品</div>
-    <div class="rcard">${S.recipes.map(r=>`<div class="ri" onclick="togSlot('${owner}',${day},'${meal}',${r.id},'${label}')" style="padding:9px 12px">
-      <div class="re" style="width:34px;height:34px;font-size:20px">${r.imgData?`<img src="${r.imgData}">`:`${r.emoji}`}</div>
-      <div style="flex:1"><div style="font-size:13px;font-weight:500">${r.name}</div><div class="rstatus ${r.status==='done'?'s-d':'s-l'}" style="margin-top:3px">${r.status==='done'?'✓ 已掌握':'📖 待学习'}</div></div>
-      ${curIds.includes(String(r.id))?`<span style="color:var(--sage);font-size:17px;font-weight:700">✓</span>`:''}
-    </div>`).join('')}</div>`;
-  openM();
-}
-function togSlot(o,d,m,rid,label){
-  const r=S.recipes.find(x=>x.id===rid);if(!r)return;
-  let a=gSlot(o,d,m);const i=a.findIndex(x=>String(x.id)===String(rid));
-  if(i>=0)a.splice(i,1);else a.push({id:rid,name:r.name,emoji:r.emoji});
-  sSlot(o,d,m,a);openPicker(o,d,m,label);renderWeekly();
-}
-function genList(){
-  const map={};
-  Object.keys(S.weekly).filter(k=>k.startsWith('family-')).forEach(k=>(S.weekly[k]||[]).forEach(m=>{const r=S.recipes.find(x=>x.id===m.id);if(r)r.ing.forEach(i=>{if(!map[i.n])map[i.n]={id:Date.now()+Math.random(),name:i.n,qty:i.q,storeId:null,checked:false}})}));
-  Object.keys(S.weekly).filter(k=>!k.startsWith('family-')).forEach(k=>(S.weekly[k]||[]).forEach(m=>{const r=S.recipes.find(x=>x.id===m.id);if(r)r.ing.forEach(i=>{if(!map[i.n])map[i.n]={id:Date.now()+Math.random(),name:i.n,qty:i.q,storeId:null,checked:false}})}));
-  const seen=new Set(),reminds=[];
-  Object.values(S.weekly).forEach(a=>(a||[]).forEach(m=>{const r=S.recipes.find(x=>x.id===m.id);if(r&&r.prepDays>0&&!seen.has(r.id)){seen.add(r.id);reminds.push(r)}}));
-  const manual=S.shop.items.filter(i=>i.manual);
-  S.shop.items=[...Object.values(map),...manual];
-  S.shop.reminds=reminds;sv();goTab(2);
-}
-let inlineStore=null;
+
+/* ══════════════════════════════
+   SHOPPING
+══════════════════════════════ */
 function renderShop(){
   const c=document.getElementById('shop');
-  const rems=S.shop.reminds||[];
   const items=S.shop.items;
+  const sel=S.shop.selectedIds||[];
+
+  if(!items.length){
+    c.innerHTML=`<div class="empty"><div class="ei">🛒</div><p>先在下周页规划菜单<br>再保存生成买菜清单</p></div><div style="margin-top:12px"><button class="bp amb" onclick="goTab(2)">📅 去规划下周菜单</button></div>`;
+    return;
+  }
+
+  // group by store
+  const stores=S.shop.stores;
+  const unassigned=items.filter(i=>!i.storeId&&!i.checked);
+  const checked=items.filter(i=>i.checked);
+
+  // store tabs at top
+  let html=`<div class="loc-tabs" id="loc-tabs">`;
+  html+=`<span class="ltab on" id="ltab-all" onclick="filterShop('all')">全部</span>`;
+  stores.forEach(st=>{
+    const stItems=items.filter(i=>i.storeId===st.id&&!i.checked);
+    const allDone=stItems.length>0&&stItems.every(i=>i.checked);
+    html+=`<span class="ltab${allDone?' done-tab':''}" id="ltab-${st.id}" onclick="filterShop('${st.id}')">${st.name} ${stItems.length?`(${stItems.length})`:'✓'}</span>`;
+  });
+  html+=`</div>`;
+
+  // progress
   const ck=items.filter(i=>i.checked).length,tot=items.length;
-  let html='';
-  if(rems.length)html+=`<div class="remind-card"><div class="remind-ttl">⏰ 本周需要提前准备</div>${rems.map(r=>`<div class="remind-item"><span>${r.emoji}</span><div><b>${r.name}</b> — 提前${r.prepDays}天<br><span style="font-size:11px">${r.prepNote||''}</span></div></div>`).join('')}</div>`;
-  if(tot>0)html+=`<div class="prog-card"><div style="font-size:10px;font-weight:600;color:var(--bark);letter-spacing:.5px;text-transform:uppercase">采购进度</div><div style="font-size:24px;font-weight:700;margin:3px 0">${ck} <span style="font-size:14px;color:var(--bark);font-weight:400">/ ${tot} 项</span></div><div class="pb"><div class="pbf" style="width:${Math.round(ck/tot*100)}%"></div></div></div>`;
-  if(!tot&&!rems.length)html+=`<div class="empty"><div class="ei">🛒</div><p>先安排本周菜谱<br>再生成买菜清单</p></div><div style="margin-top:12px"><button class="bp amb" onclick="goTab(1)">📅 去安排本周菜谱</button></div>`;
-  const unpurchased=items.filter(i=>!i.checked);
-  const purchased=items.filter(i=>i.checked);
-  if(tot>0||rems.length){
-    if(unpurchased.length||inlineStore==='__new'){
-      html+=`<div class="sttl">待购买（${unpurchased.length}项）</div><div class="scard">
-        ${unpurchased.map(it=>siHTML(it)).join('')}
-        ${inlineStore==='__new'?inlineHTML('__new'):`<div class="si-add" onclick="startAdd('__new')"><div class="si-add-ico">＋</div><span style="font-size:13px;color:var(--bark)">手动添加食材</span></div>`}
-      </div>`;
-    } else {
-      html+=`<div class="scard">${inlineStore==='__new'?inlineHTML('__new'):`<div class="si-add" onclick="startAdd('__new')"><div class="si-add-ico">＋</div><span style="font-size:13px;color:var(--bark)">手动添加食材</span></div>`}</div>`;
+  html+=`<div class="prog-card"><div style="font-size:10px;font-weight:600;color:var(--bark);letter-spacing:.5px;text-transform:uppercase">采购进度</div><div style="font-size:22px;font-weight:700;margin:3px 0">${ck} <span style="font-size:13px;color:var(--bark);font-weight:400">/ ${tot} 项</span></div><div class="pb"><div class="pbf" style="width:${Math.round(ck/tot*100)}%"></div></div></div>`;
+
+  // store sections
+  stores.forEach(st=>{
+    const stItems=items.filter(i=>i.storeId===st.id&&!i.checked);
+    if(!stItems.length)return;
+    html+=`<div style="margin-bottom:8px">
+      <div style="display:flex;align-items:center;gap:7px;padding:8px 12px;background:var(--parch);border-radius:var(--r) var(--r) 0 0;border:1px solid var(--sand);border-bottom:none">
+        <span style="font-size:14px">🏪</span><span style="font-size:13px;font-weight:600;flex:1">${st.name}</span>
+        <span style="font-size:11px;color:var(--bark)">${stItems.length} 项</span>
+      </div>
+      <div class="scard" style="border-radius:0 0 var(--r) var(--r);border-top:none">
+        ${stItems.map(it=>siHTML(it,sel)).join('')}
+      </div>
+    </div>`;
+  });
+
+  // unassigned
+  if(unassigned.length){
+    html+=`<div class="sl2" style="margin-top:12px">待分配地点（${unassigned.length}项）</div>
+    <div class="scard">${unassigned.map(it=>siHTML(it,sel)).join('')}</div>`;
+  }
+
+  // checked/done
+  if(checked.length){
+    html+=`<div class="sl2" style="margin-top:12px;color:var(--sand2)">已购买（${checked.length}项）</div>
+    <div class="scard" style="opacity:.55">${checked.map(it=>`<div class="si"><span class="chk on">✓</span><span class="sin" style="text-decoration:line-through;color:var(--bark)">${it.name}</span><span class="siq">${it.qty}</span></div>`).join('')}</div>`;
+  }
+
+  // bottom action bar
+  const selCount=sel.length;
+  html+=`<div style="height:64px"></div>
+  <div class="shop-action-bar">
+    ${selCount>0
+      ?`<button class="bp" onclick="openLocAssign()">为选中的 ${selCount} 项分配购买地点</button>`
+      :`<div style="display:flex;gap:7px">
+        <button class="bo bark" style="flex:1" onclick="addManualItem()">＋ 手动添加</button>
+        ${ck>0?`<button class="bo red" onclick="clearChecked()">清除已购买</button>`:''}
+      </div>`
     }
-    if(purchased.length)html+=`<div class="sttl" style="margin-top:14px">已购买（${purchased.length}项）</div><div class="scard">${purchased.map(it=>siHTML(it)).join('')}</div>`;
-  }
-  const assigned=items.filter(i=>i.storeId&&S.shop.stores.find(s=>s.id===i.storeId));
-  if(assigned.length){
-    html+=`<div class="sttl" style="margin-top:16px">按购买地点</div>`;
-    S.shop.stores.forEach(st=>{
-      const sti=assigned.filter(i=>i.storeId===st.id);if(!sti.length)return;
-      html+=`<div style="margin-bottom:10px"><div class="store-hdr"><span style="font-size:16px">🏪</span><span class="store-nm">${st.name}</span><span class="store-ct">${sti.filter(i=>i.checked).length}/${sti.length}</span></div><div class="scard" style="border-radius:0 0 var(--r) var(--r);border-top:none">${sti.map(it=>siHTML(it)).join('')}</div></div>`;
-    });
-  }
-  if(ck>0)html+=`<div style="margin-top:10px"><button class="bo red" style="width:100%;padding:10px" onclick="clearCk()">清除已购买项目</button></div>`;
-  c.innerHTML=html;
-  if(inlineStore){const inp=document.getElementById(`ni-n-${inlineStore}`);if(inp)setTimeout(()=>inp.focus(),40)}
-}
-function siHTML(it){
-  const store=S.shop.stores.find(s=>s.id===it.storeId);
-  return`<div class="si"><div class="chk${it.checked?' on':''}" onclick="togSI('${it.id}')">${it.checked?'✓':''}</div><span class="sin${it.checked?' ck':''}">${it.name}</span><span class="siq">${it.qty}</span><span class="sloc${store?' set':''}" onclick="openLocPicker('${it.id}')">${store?store.name:'+ 地点'}</span><button class="sedit" onclick="editSI('${it.id}')">✏️</button></div>`;
-}
-function inlineHTML(key){
-  return`<div class="si-edit-row"><input class="ni-n" type="text" id="ni-n-${key}" placeholder="食材名称" onkeydown="niKey(event,'${key}')"><input class="ni-q" type="text" id="ni-q-${key}" placeholder="用量" onkeydown="niKey(event,'${key}')"><button class="si-ok" onclick="confirmAdd('${key}')">确认</button><button class="ni-x" onclick="cancelAdd()">×</button></div>`;
-}
-function openLocPicker(id){
-  const it=S.shop.items.find(x=>String(x.id)===String(id));if(!it)return;
-  document.getElementById('mttl').textContent='选择购买地点';
-  document.getElementById('mbdy').innerHTML=`<div class="rcard" style="padding:0 14px">
-    <div class="loc-opt" onclick="assignLoc('${id}',null)"><div class="loc-dot" style="background:var(--sand2)"></div><span style="flex:1;font-size:14px">不指定</span>${!it.storeId?'<span style="color:var(--sage);font-weight:700">✓</span>':''}</div>
-    ${S.shop.stores.map(s=>`<div class="loc-opt" onclick="assignLoc('${id}','${s.id}')"><div class="loc-dot" style="background:${s.color}"></div><span style="flex:1;font-size:14px">${s.name}</span>${it.storeId===s.id?'<span style="color:var(--sage);font-weight:700">✓</span>':''}</div>`).join('')}
   </div>`;
+
+  c.innerHTML=html;
+}
+
+function siHTML(it,sel){
+  const isSel=(sel||[]).includes(String(it.id));
+  const store=S.shop.stores.find(s=>s.id===it.storeId);
+  return`<div class="si${isSel?' selected':''}" onclick="toggleSel('${it.id}')">
+    <div class="si-sel${isSel?' on':''}">${isSel?'✓':''}</div>
+    <span class="sin">${it.name}</span>
+    <span class="siq">${it.qty}</span>
+    ${store?`<span class="sloc-tag">${store.name}</span>`:''}
+    <button onclick="event.stopPropagation();toggleItemDone('${it.id}')" style="background:none;border:none;color:var(--sand2);cursor:pointer;font-size:13px;padding:2px 4px">${it.checked?'↩':'✓'}</button>
+  </div>`;
+}
+
+function toggleSel(id){
+  if(!S.shop.selectedIds)S.shop.selectedIds=[];
+  const idx=S.shop.selectedIds.indexOf(String(id));
+  if(idx>=0)S.shop.selectedIds.splice(idx,1);
+  else S.shop.selectedIds.push(String(id));
+  sv();renderShop();
+}
+
+function toggleItemDone(id){
+  const it=S.shop.items.find(x=>String(x.id)===String(id));
+  if(it){it.checked=!it.checked;if(it.checked)S.shop.selectedIds=(S.shop.selectedIds||[]).filter(s=>s!==String(id));}
+  sv();renderShop();
+}
+
+function openLocAssign(){
+  document.getElementById('mttl').textContent='选择购买地点';
+  document.getElementById('mbdy').innerHTML=`
+    <p style="font-size:13px;color:var(--bark);margin-bottom:12px">为选中的 ${S.shop.selectedIds.length} 项食材选择购买地点：</p>
+    <div class="rcard" style="padding:0 13px">
+      <div class="loc-opt" onclick="assignLoc(null)"><div class="loc-dot" style="background:var(--sand2)"></div><span style="flex:1;font-size:14px">不指定</span></div>
+      ${S.shop.stores.map(s=>`<div class="loc-opt" onclick="assignLoc('${s.id}')"><div class="loc-dot" style="background:${s.color}"></div><span style="flex:1;font-size:14px">${s.name}</span></div>`).join('')}
+    </div>`;
   openM();
 }
-function assignLoc(id,storeId){const it=S.shop.items.find(x=>String(x.id)===String(id));if(it){it.storeId=storeId;sv()}closeM();renderShop()}
-function startAdd(key){inlineStore=key;renderShop()}
-function cancelAdd(){inlineStore=null;renderShop()}
-function confirmAdd(key){
-  const n=(document.getElementById(`ni-n-${key}`)?.value||'').trim();
-  const q=(document.getElementById(`ni-q-${key}`)?.value||'').trim();
-  if(!n){cancelAdd();return}
-  S.shop.items.push({id:Date.now(),name:n,qty:q,storeId:null,checked:false,manual:true});
-  sv();inlineStore=null;renderShop();
+function assignLoc(storeId){
+  (S.shop.selectedIds||[]).forEach(id=>{
+    const it=S.shop.items.find(x=>String(x.id)===String(id));
+    if(it)it.storeId=storeId;
+  });
+  S.shop.selectedIds=[];
+  sv();closeM();renderShop();
 }
-function niKey(e,key){if(e.key==='Enter')confirmAdd(key);if(e.key==='Escape')cancelAdd()}
-function togSI(id){const i=S.shop.items.find(x=>String(x.id)===String(id));if(i)i.checked=!i.checked;sv();renderShop()}
-function editSI(id){
-  const it=S.shop.items.find(x=>String(x.id)===String(id));if(!it)return;
-  document.getElementById('mttl').textContent='编辑食材';
-  document.getElementById('mbdy').innerHTML=`<div class="fg"><div class="fl">食材名</div><input type="text" id="sin" value="${it.name}"></div><div class="fg"><div class="fl">用量</div><input type="text" id="siq" value="${it.qty}"></div><button class="bp" onclick="saveSI('${id}')">保存</button><button class="bo red" style="width:100%;margin-top:8px" onclick="delSI('${id}')">删除</button>`;
+
+function filterShop(storeId){
+  // visual only — highlight tab
+  document.querySelectorAll('.ltab').forEach(t=>t.classList.remove('on'));
+  const el=document.getElementById('ltab-'+(storeId==='all'?'all':storeId));
+  if(el)el.classList.add('on');
+  // scroll to store section if needed (simplified: just render)
+}
+
+function addManualItem(){
+  document.getElementById('mttl').textContent='手动添加食材';
+  document.getElementById('mbdy').innerHTML=`
+    <div class="fg"><div class="fl">食材名</div><input type="text" id="sin" placeholder="例：大葱"></div>
+    <div class="fg"><div class="fl">用量</div><input type="text" id="siq" placeholder="例：2根"></div>
+    <button class="bp" onclick="saveManualItem()">添加</button>`;
   openM();
 }
-function saveSI(id){const it=S.shop.items.find(x=>String(x.id)===String(id));if(it){it.name=document.getElementById('sin').value.trim();it.qty=document.getElementById('siq').value.trim()}sv();closeM();renderShop()}
-function delSI(id){S.shop.items=S.shop.items.filter(x=>String(x.id)!==String(id));sv();closeM();renderShop()}
-function clearCk(){S.shop.items=S.shop.items.filter(i=>!i.checked);sv();renderShop()}
-function openStores(){document.getElementById('mttl').textContent='管理购买地点';renderStoresBody();openM()}
+function saveManualItem(){
+  const n=document.getElementById('sin').value.trim();if(!n)return;
+  S.shop.items.push({id:Date.now(),name:n,qty:document.getElementById('siq').value.trim(),storeId:null,checked:false,selected:false});
+  sv();closeM();renderShop();
+}
+function clearChecked(){S.shop.items=S.shop.items.filter(i=>!i.checked);sv();renderShop()}
+
+function openStores(){
+  document.getElementById('mttl').textContent='管理购买地点';renderStoresBody();openM();
+}
 function renderStoresBody(){
-  document.getElementById('mbdy').innerHTML=`<div style="margin-bottom:12px">${S.shop.stores.map(s=>`<div class="note-row"><div style="width:10px;height:10px;border-radius:50%;background:${s.color};flex-shrink:0"></div><span style="flex:1;font-size:14px">${s.name}</span><button onclick="delSt('${s.id}')" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:17px;line-height:1">×</button></div>`).join('')}</div><div style="display:flex;gap:8px"><input type="text" id="nstn" placeholder="新地点名称" style="flex:1"><button class="bo" onclick="addSt()">添加</button></div>`;
+  document.getElementById('mbdy').innerHTML=`
+    <div style="margin-bottom:10px">${S.shop.stores.map(s=>`
+      <div class="note-row"><div style="width:9px;height:9px;border-radius:50%;background:${s.color};flex-shrink:0"></div><span style="flex:1">${s.name}</span><button onclick="delSt('${s.id}')" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:16px">×</button></div>`).join('')}
+    </div>
+    <div style="display:flex;gap:7px"><input type="text" id="nstn" placeholder="新地点名称" style="flex:1"><button class="bo" onclick="addSt()">添加</button></div>`;
 }
 function addSt(){const n=document.getElementById('nstn').value.trim();if(!n)return;S.shop.stores.push({id:'s'+Date.now(),name:n,color:STC[S.shop.stores.length%STC.length]});sv();renderStoresBody()}
 function delSt(id){S.shop.stores=S.shop.stores.filter(s=>s.id!==id);S.shop.items.forEach(i=>{if(i.storeId===id)i.storeId=null});sv();renderStoresBody()}
+
 function openM(){document.getElementById('modal').classList.add('op')}
 function closeM(){document.getElementById('modal').classList.remove('op')}
 function mOut(e){if(e.target===document.getElementById('modal'))closeM()}
+
+// init
 renderRecipes();
 document.getElementById('swrap').style.display='block';
 </script>
